@@ -10,6 +10,38 @@
   --r:#8B0000;--rv:#B22222;--rp:#fdf0f0;--rb:#e8c8c8;
   --n:#1a1a1a;--gf:#2d2d2d;--g:#555;--gc:#f9f6f6;--b:#fefefe;
 }
+/* ── Dark mode ── */
+body.dark{
+  --r:#e05555;--rv:#ff8080;--rp:#2a1010;--rb:#3a2020;
+  --n:#e8e0d8;--gf:#c8bfb5;--g:#8a8278;--gc:#1e1a18;--b:#131110;
+}
+body.dark header{background:#0d0b0a;border-bottom-color:#e05555}
+body.dark nav{background:#1a0e0e}
+body.dark .fiche{background:#1a1614;border-color:#3a2020;border-top-color:#e05555}
+body.dark .arts{background:#0d0b0a;color:#d8d0c8}
+body.dark .jp-block{background:#1a1614;border-left-color:#5a5248}
+body.dark .retenir{background:#2a1010;border-left-color:#e05555}
+body.dark .cm{background:#1c1a10;border-left-color:#c9a800}
+body.dark .cm .jp-block{background:#201e10}
+body.dark .idx-letter{background:#0d0b0a}
+body.dark .art-row,body.dark .idx-row{border-bottom-color:#3a2020}
+body.dark .art-row:active,body.dark .idx-row:active{background:#2a1010}
+body.dark .cm-jp{background:#1c1a10;border-left-color:#c9a800}
+body.dark thead tr{background:#0d0b0a}
+body.dark tbody tr:nth-child(even){background:#1a1614}
+body.dark tbody td{border-bottom-color:#3a2020}
+body.dark .formule{background:#0d0b0a}
+body.dark .card{background:#1a1614;border-color:#3a2020;border-top-color:#e05555}
+body.dark footer{background:#0d0b0a;border-top-color:#e05555}
+body.dark .postit-row{background:#1a1614}
+body.dark select,body.dark input[type=text]{background:#1a1614;color:#e8e0d8;border-color:#3a2020}
+body.dark .game-card{background:#1a1614;border-color:#3a2020}
+body.dark #quiz-card{background:#1a1614;border-color:#3a2020;border-top-color:#e05555}
+body.dark #qcm-btns button{background:#1a1614;border-color:#3a2020;color:#c8bfb5}
+/* Dark toggle button */
+.dark-btn{position:fixed;bottom:1.4rem;right:1.4rem;z-index:999;background:var(--n);color:var(--b);border:2px solid var(--rb);padding:.45rem .9rem;font-size:.8rem;font-family:inherit;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px;box-shadow:0 2px 10px rgba(0,0,0,.3);transition:background .2s,color .2s}
+body.dark .dark-btn{background:#e8e0d8;color:#131110;border-color:#5a5248}
+@media(max-width:640px){.dark-btn{bottom:.8rem;right:.8rem;font-size:.7rem}}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'EB Garamond',Georgia,serif;background:var(--b);color:var(--n);font-size:17px;line-height:1.75}
 
@@ -117,13 +149,6 @@ footer span{color:var(--rv)}
 .postit-header{padding:.4rem 1rem;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
 .postit-row{background:#fff}
 
-/* ── Mode surlignage ── */
-.hl-btn{position:fixed;bottom:1.4rem;right:1.4rem;z-index:999;background:var(--n);color:#f0c040;border:2px solid #f0c040;padding:.45rem .9rem;font-size:.8rem;font-family:inherit;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border-radius:2px;box-shadow:0 2px 10px rgba(0,0,0,.3);transition:background .15s,color .15s}
-.hl-btn.active{background:#f0c040;color:#1a1a1a}
-body.hl-mode *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect x='2' y='12' width='16' height='6' fill='%23f0c040' opacity='.8'/%3E%3Crect x='8' y='2' width='4' height='12' fill='%23555'/%3E%3C/svg%3E") 2 18, text}
-mark.hl{background:#f9e04b;color:inherit;padding:0 .15em;border-radius:1px}
-mark.hl:hover{background:#f0c040;cursor:pointer}
-body.hl-mode mark.hl:hover::after{content:' ✕';font-size:.75em;color:#8B0000}
 
 @media(max-width:640px){
   header{padding:1.2rem 1rem 1rem}
@@ -132,7 +157,6 @@ body.hl-mode mark.hl:hover::after{content:' ✕';font-size:.75em;color:#8B0000}
   main{padding:1.4rem .9rem 4rem}
   .cards-grid{grid-template-columns:1fr 1fr;gap:.8rem}
   .g2{grid-template-columns:1fr}
-  .hl-btn{bottom:.8rem;right:.8rem}
 }
 @media(max-width:380px){.cards-grid{grid-template-columns:1fr}}
 
@@ -2486,208 +2510,30 @@ function endGame(){
 <footer><p>Procédure pénale — Support de révision &nbsp;·&nbsp; <span>2025-2026</span></p></footer>
 
 </div><!-- /.wrap -->
-<button class="hl-btn" id="hlBtn" title="Mode surlignage">🖍 Surligner</button>
+<button class="dark-btn" id="darkBtn" title="Mode sombre">🌙 Nuit</button>
 
 <script>
 (function(){
-  const btn = document.getElementById('hlBtn');
-  const STORE_KEY = 'pp_highlights';
-  let hlMode = false;
+  const btn = document.getElementById('darkBtn');
+  const DARK_KEY = 'pp_dark';
 
-  /* ── Restore saved highlights ── */
-  function restoreHighlights(){
-    const saved = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
-    saved.forEach(function(h){ applyHighlight(h.xpath, h.start, h.end, false); });
+  function applyDark(on){
+    document.body.classList.toggle('dark', on);
+    btn.textContent = on ? '☀️ Jour' : '🌙 Nuit';
+    try { localStorage.setItem(DARK_KEY, on ? '1' : '0'); } catch(e){}
   }
 
-  /* ── Toggle mode ── */
-  btn.addEventListener('click', function(){
-    hlMode = !hlMode;
-    document.body.classList.toggle('hl-mode', hlMode);
-    btn.classList.toggle('active', hlMode);
-    btn.textContent = hlMode ? '✕ Quitter surlignage' : '🖍 Surligner';
-  });
-
-  /* ── Handle text selection ── */
-  document.addEventListener('mouseup', function(e){
-    if (!hlMode) return;
-    if (e.target.closest('.hl-btn')) return;
-    const sel = window.getSelection();
-    if (!sel || sel.isCollapsed) return;
-    const range = sel.getRangeAt(0);
-    if (!range || range.collapsed) return;
-    // wrap in mark
-    try {
-      const mark = document.createElement('mark');
-      mark.className = 'hl';
-      range.surroundContents(mark);
-      sel.removeAllRanges();
-      saveHighlights();
-    } catch(err) {
-      // selection crosses elements — skip silently
-      sel.removeAllRanges();
-    }
-  });
-
-  /* ── Remove highlight on click ── */
-  document.addEventListener('click', function(e){
-    if (!hlMode) return;
-    const mark = e.target.closest('mark.hl');
-    if (!mark) return;
-    const parent = mark.parentNode;
-    while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
-    parent.removeChild(mark);
-    parent.normalize();
-    saveHighlights();
-  });
-
-  /* ── Save: walk DOM, record all <mark class="hl"> by XPath ── */
-  function saveHighlights(){
-    const marks = document.querySelectorAll('mark.hl');
-    const data = [];
-    marks.forEach(function(m){
-      data.push({ html: m.innerHTML, xpath: getXPath(m) });
-    });
-    localStorage.setItem(STORE_KEY, JSON.stringify(data));
+  // Restaurer la préférence sauvegardée, ou utiliser la préférence système
+  let saved;
+  try { saved = localStorage.getItem(DARK_KEY); } catch(e){}
+  if(saved !== null){
+    applyDark(saved === '1');
+  } else {
+    applyDark(false);
   }
 
-  /* ── Restore: re-inject marks ── */
-  function applyHighlight(xpath, startOff, endOff, save){
-    // stored as full mark — restore innerHTML approach
-  }
-
-  /* ── Simple XPath for a node ── */
-  function getXPath(el){
-    const parts = [];
-    while (el && el.nodeType === 1) {
-      let idx = 1;
-      let sib = el.previousSibling;
-      while (sib) { if (sib.nodeType === 1 && sib.tagName === el.tagName) idx++; sib = sib.previousSibling; }
-      parts.unshift(el.tagName.toLowerCase() + '[' + idx + ']');
-      el = el.parentNode;
-    }
-    return '/' + parts.join('/');
-  }
-
-  /* ── Better persistence: save outer HTML of each marked parent paragraph ── */
-  // On reload, marks are gone. Use a simpler approach: save mark parent's text and innerHTML.
-  // Override saveHighlights with a innerHTML-based approach per .fiche / .cm / .retenir blocks.
-  function saveV2(){
-    const containers = document.querySelectorAll('.fiche, .cm, .retenir, .jp-block, .bloc, .arts, .formule');
-    const data = [];
-    containers.forEach(function(c, i){
-      if (c.querySelector('mark.hl')){
-        data.push({ idx: i, html: c.innerHTML });
-      }
-    });
-    localStorage.setItem(STORE_KEY, JSON.stringify(data));
-  }
-
-  function restoreV2(){
-    const saved = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
-    if (!saved.length) return;
-    const containers = document.querySelectorAll('.fiche, .cm, .retenir, .jp-block, .bloc, .arts, .formule');
-    saved.forEach(function(d){
-      if (containers[d.idx]) containers[d.idx].innerHTML = d.html;
-    });
-  }
-
-  // Override with V2
-  document.removeEventListener && null;
-  document.addEventListener('mouseup', function(){}, false); // already bound above
-  // patch save
-  window.__hlSave = saveV2;
-  window.__hlRestore = restoreV2;
-
-  /* ── Re-wire with V2 ── */
-  document.addEventListener('mouseup', function(e){
-    if (!hlMode) return;
-    if (e.target.closest('.hl-btn')) return;
-    // handled above, but re-call save
-  });
-
-  // Replace save calls
-  const _orig_mouseup = document.onmouseup;
-  restoreV2();
+  btn.addEventListener('click', () => applyDark(!document.body.classList.contains('dark')));
 })();
-
-// Cleaner final version — replaces the above with a single clean listener
-document.addEventListener('DOMContentLoaded', function(){
-  const STORE = 'pp_hl_v2';
-  const btn = document.getElementById('hlBtn');
-  let mode = false;
-  const selectors = '.fiche, .cm, .retenir, .jp-block, .bloc, .arts, .formule, .idx-letter, .art-row, .idx-row';
-
-  function save(){
-    const nodes = document.querySelectorAll(selectors);
-    const out = [];
-    nodes.forEach(function(n, i){ if(n.querySelector('mark.hl')) out.push({i:i, h:n.innerHTML}); });
-    try{ localStorage.setItem(STORE, JSON.stringify(out)); } catch(e){}
-  }
-
-  function restore(){
-    let data; try{ data = JSON.parse(localStorage.getItem(STORE)||'[]'); } catch(e){ return; }
-    const nodes = document.querySelectorAll(selectors);
-    data.forEach(function(d){ if(nodes[d.i]) nodes[d.i].innerHTML = d.h; });
-  }
-
-  restore();
-
-  btn.addEventListener('click', function(){
-    mode = !mode;
-    document.body.classList.toggle('hl-mode', mode);
-    btn.classList.toggle('active', mode);
-    btn.innerHTML = mode ? '✕ Quitter' : '🖍 Surligner';
-  });
-
-  document.addEventListener('mouseup', function(e){
-    if (!mode || e.target.closest('#hlBtn')) return;
-    const sel = window.getSelection();
-    if (!sel || sel.isCollapsed) return;
-    const range = sel.getRangeAt(0);
-    if (!range || range.collapsed) return;
-    try{
-      const m = document.createElement('mark');
-      m.className = 'hl';
-      range.surroundContents(m);
-      sel.removeAllRanges();
-      save();
-    } catch(_){ sel.removeAllRanges(); }
-  });
-
-  document.addEventListener('click', function(e){
-    if (!mode) return;
-    const m = e.target.closest('mark.hl');
-    if (!m) return;
-    const p = m.parentNode;
-    while(m.firstChild) p.insertBefore(m.firstChild, m);
-    p.removeChild(m);
-    p.normalize();
-    save();
-  });
-
-  // Bouton effacer tout
-  const clearBtn = document.createElement('button');
-  clearBtn.className = 'hl-btn';
-  clearBtn.id = 'hlClear';
-  clearBtn.style.cssText = 'bottom:4rem;right:1.4rem;background:#fff;color:#8B0000;border-color:#8B0000;font-size:.7rem;display:none';
-  clearBtn.textContent = '🗑 Tout effacer';
-  document.body.appendChild(clearBtn);
-
-  btn.addEventListener('click', function(){
-    clearBtn.style.display = mode ? 'block' : 'none';
-  });
-
-  clearBtn.addEventListener('click', function(){
-    document.querySelectorAll('mark.hl').forEach(function(m){
-      const p = m.parentNode;
-      while(m.firstChild) p.insertBefore(m.firstChild, m);
-      p.removeChild(m);
-      p.normalize();
-    });
-    try{ localStorage.removeItem(STORE); } catch(e){}
-  });
-});
 </script>
 
 </body>
