@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,7 +37,8 @@ nav label:active{color:#fff;background:rgba(255,255,255,.15)}
 #r-f4:checked ~ .wrap #home-content,
 #r-f5:checked ~ .wrap #home-content,
 #r-f6:checked ~ .wrap #home-content,
-#r-f7:checked ~ .wrap #home-content { display:none; }
+#r-f7:checked ~ .wrap #home-content,
+#r-fc:checked ~ .wrap #home-content { display:none; }
 #r-home:checked ~ .wrap #home-content{display:block}
 
 #r-f1:checked ~ .wrap #page-f1,
@@ -47,7 +47,8 @@ nav label:active{color:#fff;background:rgba(255,255,255,.15)}
 #r-f4:checked ~ .wrap #page-f4,
 #r-f5:checked ~ .wrap #page-f5,
 #r-f6:checked ~ .wrap #page-f6,
-#r-f7:checked ~ .wrap #page-f7 {display:block}
+#r-f7:checked ~ .wrap #page-f7,
+#r-fc:checked ~ .wrap #page-fc {display:block}
 
 /* Nav active */
 #r-home:checked ~ .wrap .nav-home,
@@ -57,7 +58,8 @@ nav label:active{color:#fff;background:rgba(255,255,255,.15)}
 #r-f4:checked ~ .wrap .nav-f4,
 #r-f5:checked ~ .wrap .nav-f5,
 #r-f6:checked ~ .wrap .nav-f6,
-#r-f7:checked ~ .wrap .nav-f7 {color:#fff !important;background:rgba(255,255,255,.15) !important;border-bottom-color:#fff !important}
+#r-f7:checked ~ .wrap .nav-f7,
+#r-fc:checked ~ .wrap .nav-fc {color:#fff !important;background:rgba(255,255,255,.15) !important;border-bottom-color:#fff !important}
 
 /* ── LAYOUT ── */
 #home{padding:2.5rem 2.5rem 4rem;max-width:100%;margin:0 auto;border-bottom:3px solid var(--rb)}
@@ -124,6 +126,64 @@ main{max-width:100%;margin:0 auto;padding:2.2rem 2.5rem 5rem}
 .cm-wrap{background:#fffde7;border-left:3px solid #f0c040;padding:.65rem 1rem;margin-top:.65rem;font-size:.9rem;line-height:1.6;color:var(--gf)}
 .cm-wrap h4{font-size:.88rem;font-weight:700;color:#7a6000;margin-bottom:.25rem;padding-left:.55rem;border-left:3px solid #f0c040}
 
+/* ── FLASHCARDS ── */
+.flash-pack{margin-top:1rem;border:1px solid var(--rb);background:#fff}
+.flash-pack>summary{list-style:none;cursor:pointer;padding:.9rem 1rem;font-size:.95rem;font-weight:700;color:var(--r);background:var(--rp);border-left:4px solid var(--r)}
+.flash-pack>summary::-webkit-details-marker{display:none}
+.flash-pack>summary::after{content:'Cliquer pour ouvrir / fermer';float:right;font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--g);text-transform:uppercase}
+.flash-pack[open]>summary::after{content:'Section ouverte'}
+.flash-pack-body{padding:1rem}
+.flash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:.9rem}
+.flashcard{border:1px solid var(--rb);background:#fff}
+.flashcard>summary{list-style:none;cursor:pointer;padding:.85rem .95rem;font-size:.9rem;font-weight:700;color:var(--gf);line-height:1.45}
+.flashcard>summary::-webkit-details-marker{display:none}
+.flashcard>summary::before{content:'Q';display:inline-flex;align-items:center;justify-content:center;width:1.3rem;height:1.3rem;border-radius:999px;background:var(--r);color:#fff;font-size:.72rem;font-weight:700;margin-right:.55rem;vertical-align:middle}
+.flashcard[open]>summary{border-bottom:1px solid var(--rb);background:var(--gc)}
+.flash-answer{padding:.85rem .95rem;font-size:.9rem;line-height:1.6;color:var(--gf)}
+.flash-answer strong{color:var(--r)}
+.flash-intro{font-size:.92rem;color:var(--gf);line-height:1.65}
+.flash-intro p+p{margin-top:.5rem}
+.flash-player{max-width:880px;margin:1rem auto 0}
+.flash-start{border:1px solid var(--rb);border-radius:22px;background:linear-gradient(180deg,#fff 0%,#fcf4ef 100%);padding:1.2rem 1.2rem 1rem;box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.flash-start h4{font-size:1.02rem;color:var(--r);margin-bottom:.35rem}
+.flash-start p{font-size:.92rem;color:var(--gf);line-height:1.6}
+.flash-toolbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+.flash-toolbar label{display:block;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--r);margin-bottom:.3rem}
+.flash-toolbar select{width:100%;padding:.7rem .75rem;border:1px solid var(--rb);background:#fff;font:inherit;color:var(--gf);border-radius:10px}
+.flash-start-actions{display:flex;justify-content:flex-end;margin-top:1rem}
+.flash-start-btn{border:1px solid var(--r);background:var(--r);color:#fff;padding:.75rem 1.1rem;border-radius:999px;font:inherit;cursor:pointer}
+.flash-stage{margin-top:1rem}
+.flash-stage[hidden]{display:none !important}
+.flash-quizlet{border:1px solid var(--rb);border-radius:22px;background:linear-gradient(180deg,#fff 0%,#fcf4ef 100%);padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.flash-progress{display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:.88rem;color:var(--g);margin-bottom:.8rem}
+.flash-progress strong{color:var(--r)}
+.flash-stats{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center}
+.flash-stat{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .65rem;border:1px solid var(--rb);border-radius:999px;background:#fff;font-size:.82rem;color:var(--gf)}
+.flash-stat strong{color:var(--r)}
+.flash-card-shell{position:relative}
+.flash-card-btn{width:100%;min-height:380px;border:1px solid #ead7d7;border-radius:26px;background:#fff;padding:1.5rem;cursor:pointer;text-align:left;font:inherit;color:inherit;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 14px 40px rgba(139,0,0,.08)}
+.flash-card-btn:focus{outline:2px solid rgba(139,0,0,.35);outline-offset:3px}
+.flash-face-label{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--r)}
+.flash-card-text{display:block;flex:1;font-size:1.45rem;line-height:1.45;color:var(--n);padding:1rem 0;max-width:820px;width:100%;margin:0 auto;text-align:center;word-break:normal;overflow-wrap:break-word}
+.flash-card-foot{font-size:.86rem;color:var(--g);text-align:center}
+.flash-feedback{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
+.flash-feedback[hidden]{display:none !important}
+.flash-feedback-btn{border:1px solid var(--rb);background:#fff;padding:.75rem 1rem;border-radius:999px;font:inherit;color:var(--gf);cursor:pointer;min-width:160px}
+.flash-feedback-btn.bad{border-color:#d97706;color:#9a6700;background:#fffaf0}
+.flash-feedback-btn.good{border-color:#15803d;color:#166534;background:#f0fdf4}
+.flash-nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:1rem}
+.flash-nav-btn{border:1px solid var(--rb);background:#fff;padding:.7rem 1rem;border-radius:999px;font:inherit;color:var(--gf);cursor:pointer;min-width:120px}
+.flash-nav-btn.primary{background:var(--r);border-color:var(--r);color:#fff}
+.flash-nav-btn.toggle{border-color:#d5b4b4}
+.flash-nav-btn.toggle.active{background:#fff3f3;border-color:var(--r);color:var(--r)}
+.flash-count{font-size:.88rem;color:var(--g);text-align:center;flex:1}
+.flash-library{margin-top:1.2rem;border:1px solid var(--rb);background:#fff}
+.flash-library h3{padding:1rem 1rem 0;margin-bottom:.2rem}
+.flash-library .def{padding:0 1rem}
+.flash-library-body{padding:0 1rem 1rem}
+.flash-source{display:none}
+.flash-empty{border:1px dashed var(--rb);background:#fff;padding:1rem;color:var(--g);font-size:.92rem}
+
 /* ── TABLE ── */
 .tw{overflow-x:auto;margin-top:.7rem}
 table{width:100%;border-collapse:collapse;font-size:.86rem}
@@ -154,6 +214,13 @@ footer span{color:var(--rv)}
   main{padding:1.4rem .9rem 4rem}
   .cards-grid{grid-template-columns:1fr 1fr;gap:.8rem}
   .g2{grid-template-columns:1fr}
+  .flash-toolbar{grid-template-columns:1fr}
+  .flash-card-btn{min-height:320px;padding:1rem}
+  .flash-card-text{font-size:1.18rem}
+  .flash-nav{flex-wrap:wrap}
+  .flash-nav-btn{flex:1}
+  .flash-start-actions{justify-content:stretch}
+  .flash-start-btn{width:100%}
 }
 @media(max-width:380px){.cards-grid{grid-template-columns:1fr}}
 </style>
@@ -169,6 +236,7 @@ footer span{color:var(--rv)}
 <input type="radio" name="page" class="nav-radio" id="r-f5">
 <input type="radio" name="page" class="nav-radio" id="r-f6">
 <input type="radio" name="page" class="nav-radio" id="r-f7">
+<input type="radio" name="page" class="nav-radio" id="r-fc">
 
 <div class="wrap">
 
@@ -189,6 +257,7 @@ footer span{color:var(--rv)}
     <li><label class="nav-f5" for="r-f5">#5 Action civile</label></li>
     <li><label class="nav-f6" for="r-f6">#6 Instruction</label></li>
     <li><label class="nav-f7" for="r-f7">#7 Nullités</label></li>
+    <li><label class="nav-fc" for="r-fc">Flashcards</label></li>
   </ul>
 </nav>
 
@@ -211,6 +280,7 @@ footer span{color:var(--rv)}
       <label class="card" for="r-f5"><span class="emoji">💼</span><h3>#5 — Action civile</h3><p>Victimes directes et indirectes, mise en mouvement par les tiers.</p></label>
       <label class="card" for="r-f6"><span class="emoji">🏛️</span><h3>#6 — L'Instruction</h3><p>Cadre, parties, actes, nullités, clôture, issues.</p></label>
       <label class="card" for="r-f7"><span class="emoji">🚫</span><h3>#7 — Les Nullités</h3><p>Nullités d'ordre public et d'intérêt privé.</p></label>
+      <label class="card" for="r-fc"><span class="emoji">🧠</span><h3>Flashcards</h3><p>Révision active par fiche, avec un niveau notions et un niveau articles / jurisprudence.</p></label>
     </div>
   </div>
 </div>
@@ -579,6 +649,13 @@ footer span{color:var(--rv)}
         </tbody>
       </table></div>
     </div>
+
+    <div class="cm-wrap" style="margin-top:.9rem">
+      <h4>📖 CM — Qui peut placer en GAV ? Sous quel contrôle ?</h4>
+      <p>Seul un <strong>officier de police judiciaire (OPJ)</strong> peut décider du placement en GAV — pas un simple agent de police (APJ). La décision est prise soit d'office, soit sur instruction du procureur, soit dans le cadre d'une commission rogatoire du juge d'instruction.</p>
+      <p>Le procureur doit être informé <strong>dès le début</strong> de la mesure, c'est-à-dire à l'heure d'appréhension de la personne. Tout retard injustifié entraîne automatiquement la nullité de la GAV. C'est lui qui autorise la prolongation et qui contrôle le déroulement de la mesure.</p>
+      <p><strong>Deux conditions cumulatives pour placer en GAV :</strong> ① il doit exister des raisons plausibles de soupçonner que la personne a commis ou tenté de commettre un crime ou un délit puni d'emprisonnement, et ② la GAV doit être l'<em>unique moyen</em> d'atteindre au moins l'un des objectifs de l'article 62-2 (investigations, éviter les pressions ou fuites, garantir la présentation au procureur, etc.).</p>
+    </div>
   </div>
 
   <div class="fiche">
@@ -633,6 +710,13 @@ footer span{color:var(--rv)}
         Cass., 1er déc. 2015 : les droits courts sont renotifiés à la prolongation.<br>
         Cass., 23 nov. 2016 : le droit au silence (droit long) n'a pas à être réitéré.
       </div>
+
+      <div class="cm-wrap" style="margin-top:.9rem">
+        <h4>📖 CM — L'avocat en GAV : un droit, pas une obligation</h4>
+        <p>La personne gardée à vue <strong>peut</strong> demander un avocat — mais personne ne l'y oblige. Si elle ne demande rien, l'absence d'avocat ne vicie pas la procédure. En revanche, si elle en fait la demande, l'OPJ doit tout mettre en œuvre pour le contacter (obligation de moyens, pas de résultat). Si l'avocat choisi n'est pas joignable dans les 2 heures, un avocat commis d'office prend le relais.</p>
+        <p><strong>Ce que peut faire l'avocat :</strong> un entretien confidentiel de 30 minutes au début de la GAV (et à chaque prolongation), la consultation de certaines pièces limitées (PV de placement, éventuels certificats médicaux, PV d'auditions de son client), et la présence lors des auditions et confrontations si le gardé à vue en fait la demande. À la fin de chaque audition, il peut poser des questions et formuler des observations.</p>
+        <p><strong>Ce qu'il ne peut pas faire :</strong> accéder à l'ensemble du dossier (contrairement à l'instruction), ni s'opposer aux décisions des enquêteurs.</p>
+      </div>
     </div>
   </div>
 
@@ -686,6 +770,13 @@ footer span{color:var(--rv)}
       <strong>Principe</strong>
       Toute contrainte exercée oblige au placement en GAV. L'audition libre sous contrainte est impossible.
     </div>
+
+    <div class="cm-wrap" style="margin-top:.9rem">
+      <h4>📖 CM — Audition libre vs garde à vue : comment choisir ?</h4>
+      <p>L'audition libre (art. 61-1 CPP) s'applique quand il existe des <strong>soupçons raisonnables</strong> contre une personne, mais que la garde à vue n'est pas <em>l'unique moyen</em> d'atteindre les objectifs de l'enquête. La personne est libre de partir à tout moment : c'est là toute la différence avec la GAV.</p>
+      <p>En pratique, les droits sont très proches : on informe la personne des soupçons, de l'infraction en cause, du droit de garder le silence et du droit à un avocat si l'infraction est punie de prison. La seule nuance notable est que l'avocat n'a pas accès à l'ensemble du dossier lors d'une audition libre, contrairement à la GAV.</p>
+      <p><strong>Passage de l'audition libre à la GAV :</strong> si des éléments nouveaux apparaissent en cours d'audition qui justifient une contrainte, l'OPJ bascule en GAV — mais le temps déjà passé en audition libre est déduit de la durée de la GAV.</p>
+    </div>
   </div>
 </div>
 
@@ -702,6 +793,21 @@ footer span{color:var(--rv)}
   </div>
 </div>
 
+<!-- GAV — FIN ET SUCCESSIONS -->
+<div class="partie">
+  <div class="partie-titre"><span class="pnum">Fiche #3</span><h2>La durée, la fin et les successions de GAV</h2></div>
+
+  <div class="fiche">
+    <div class="cm-wrap">
+      <h4>📖 CM — Fin de la GAV et successions</h4>
+      <p>La fin de la GAV est décidée par le procureur (ou le juge d'instruction si elle est placée dans ce cadre). À l'issue, soit la personne est remise en liberté, soit elle est déférée devant le procureur pour décider des suites.</p>
+      <p><strong>Point de départ :</strong> le délai court à compter du moment où la personne est effectivement à la disposition des enquêteurs — pas forcément de la décision formelle de placement. Si une personne est entendue librement puis placée en GAV, le temps d'audition libre lui est déduit.</p>
+      <p><strong>Successions de GAV pour les mêmes faits :</strong> la GAV fonctionne comme un « crédit-temps ». Si une personne a déjà été placée en GAV pour les mêmes faits, la durée déjà consommée s'impute sur la nouvelle. On ne repart pas à zéro.</p>
+      <p><strong>Successions de GAV pour des faits distincts :</strong> si les deux GAV sont discontinues (séparées dans le temps), les délais sont indépendants. En revanche, si elles se suivent sans interruption (la personne n'est jamais libérée), la durée cumulée ne peut pas dépasser le maximum légal.</p>
+    </div>
+  </div>
+</div>
+
 </main>
 </div>
 
@@ -711,33 +817,7 @@ footer span{color:var(--rv)}
 <div style="padding:1rem 1.5rem 0"><label class="btn-home" for="r-home">← Accueil</label></div>
 <main>
 
-<!-- OPPORTUNITÉ DU MP -->
-<div class="partie">
-  <div class="partie-titre"><span class="pnum">Fiche #4</span><h2>L'opportunité du ministère public</h2></div>
-
-  <div class="grid g2">
-    <div class="fiche">
-      <h3>Fondements légaux</h3>
-      <div class="arts">
-        <span class="art-title">Articles clés</span>
-        <div class="art-item"><strong>Art. 1 CPP ★</strong> — L'action publique est exercée par les magistrats ou autorités compétentes, mais peut aussi être déclenchée par la victime selon la loi.</div>
-        <div class="art-item"><strong>Art. 31 CPP ★</strong> — Le ministère public exerce l'action publique et demande l'application de la loi en restant impartial.</div>
-        <div class="art-item"><strong>Art. 40 CPP ★</strong> — Le procureur reçoit les plaintes et décide des suites. Toute autorité doit lui signaler sans délai les crimes ou délits dont elle a connaissance.</div>
-        <div class="art-item"><strong>Art. 40-1 CPP</strong> — Le procureur peut, selon les faits, poursuivre, proposer une alternative aux poursuites, ou classer sans suite.</div>
-      </div>
-    </div>
-    <div class="fiche">
-      <h3>Modes de comparution</h3>
-      <div class="arts">
-        <span class="art-title">Articles clés</span>
-        <div class="art-item"><strong>Art. 394 CPP</strong> — Le procureur fixe une audience (10 jours à 6 mois) et peut saisir le JLD pour imposer un contrôle judiciaire avant le procès.</div>
-        <div class="art-item"><strong>Art. 395 CPP</strong> — Le procureur peut décider une comparution immédiate si le délit est assez grave (au moins 2 ans de prison, ou 6 mois en flagrant délit).</div>
-        <div class="art-item"><strong>Art. 397-1 CPP</strong> — Si le prévenu refuse ou si l'affaire n'est pas prête, le tribunal renvoie entre 4 et 10 semaines.</div>
-        <div class="art-item"><strong>Art. 803-3 CPP</strong> — La personne peut être retenue jusqu'à 20 heures après la fin de la GAV pour être présentée au tribunal.</div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- OPPORTUNITÉ DU MP -->\n<div class="partie">\n  <div class="partie-titre"><span class="pnum">Fiche #4</span><h2>L'opportunité du ministère public</h2></div>\n\n  <div class="grid g2">\n    <div class="fiche">\n      <h3>Fondements légaux</h3>\n      <div class="arts">\n        <span class="art-title">Articles clés</span>\n        <div class="art-item"><strong>Art. 1 CPP ★</strong> — L'action publique est exercée par les magistrats ou autorités compétentes, mais peut aussi être déclenchée par la victime selon la loi.</div>\n        <div class="art-item"><strong>Art. 31 CPP ★</strong> — Le ministère public exerce l'action publique et demande l'application de la loi en restant impartial.</div>\n        <div class="art-item"><strong>Art. 40 CPP ★</strong> — Le procureur reçoit les plaintes et décide des suites. Toute autorité doit lui signaler sans délai les crimes ou délits dont elle a connaissance.</div>\n        <div class="art-item"><strong>Art. 40-1 CPP</strong> — Le procureur peut, selon les faits, poursuivre, proposer une alternative aux poursuites, ou classer sans suite.</div>\n      </div>\n    </div>\n    <div class="fiche">\n      <h3>Modes de comparution</h3>\n      <div class="arts">\n        <span class="art-title">Articles clés</span>\n        <div class="art-item"><strong>Art. 394 CPP</strong> — Le procureur fixe une audience (10 jours à 6 mois) et peut saisir le JLD pour imposer un contrôle judiciaire avant le procès.</div>\n        <div class="art-item"><strong>Art. 395 CPP</strong> — Le procureur peut décider une comparution immédiate si le délit est assez grave (au moins 2 ans de prison, ou 6 mois en flagrant délit).</div>\n        <div class="art-item"><strong>Art. 397-1 CPP</strong> — Si le prévenu refuse ou si l'affaire n'est pas prête, le tribunal renvoie entre 4 et 10 semaines.</div>\n        <div class="art-item"><strong>Art. 803-3 CPP</strong> — La personne peut être retenue jusqu'à 20 heures après la fin de la GAV pour être présentée au tribunal.</div>\n      </div>\n    </div>\n  </div>\n\n  <div class="fiche" style="margin-top:1rem">\n    <div class="cm-wrap">\n      <h4>📖 CM — Les choix du procureur : une liberté encadrée</h4>\n      <p>Le procureur n'est pas obligé de poursuivre toute infraction qui lui est signalée : c'est le principe de l'<strong>opportunité des poursuites</strong>. Face à une infraction, il a trois options principales : engager les poursuites (action publique), mettre en œuvre une alternative (composition pénale, médiation…), ou classer sans suite.</p>\n      <p><strong>Les modes de saisine du tribunal :</strong> quand il décide de poursuivre, le procureur doit choisir comment saisir le juge. Les deux plus courants en pratique sont la <em>convocation par OPJ</em> (simple, sans huissier) et la <em>comparution immédiate</em> (la personne comparaît le jour même, pour des délits suffisamment graves). La comparution immédiate est souvent mal perçue car elle laisse peu de temps à la défense — mais statistiquement, les peines prononcées en comparution immédiate sont souvent <em>moins</em> sévères qu'en audience classique.</p>\n      <p><strong>La CRPC (plaider coupable à la française) :</strong> le procureur peut aussi proposer une peine sans audience de jugement, si la personne reconnaît les faits. La peine proposée ne peut pas dépasser la moitié de la peine maximale, ni 3 ans d'emprisonnement. Un juge doit valider l'accord en audience publique.</p>\n    </div>\n  </div>\n</div>
 
 <!-- PRESCRIPTION -->
 <div class="partie">
@@ -779,6 +859,13 @@ footer span{color:var(--rv)}
         <strong>Distinction fondamentale</strong>
         <strong>Interruption</strong> : repart à zéro. S'étend aux infractions connexes.<br>
         <strong>Suspension</strong> : le délai reprend là où il s'est arrêté. Ne s'étend pas aux connexes.
+      </div>
+
+      <div class="cm-wrap" style="margin-top:.9rem">
+        <h4>📖 CM — Pourquoi la prescription existe-t-elle ?</h4>
+        <p>La prescription part d'une idée simple : avec le temps, poursuivre devient de moins en moins utile et de plus en plus difficile. D'un côté, si un délinquant n'a pas récidivé depuis longtemps, il semble réinséré — la peine perd sa légitimité. De l'autre, les preuves s'effacent, les témoins oublient, et les juridictions n'ont pas à être encombrées indéfiniment.</p>
+        <p><strong>Point de départ :</strong> en principe, le lendemain du jour de commission de l'infraction. Mais pour les infractions <em>occultes ou dissimulées</em> (abus de confiance, abus de biens sociaux…), le délai ne commence à courir qu'à partir du jour où l'infraction pouvait raisonnablement être découverte. Ce report est encadré : il ne peut pas prolonger la prescription au-delà de 12 ans pour les délits et 30 ans pour les crimes.</p>
+        <p><strong>Protection particulière des mineurs :</strong> pour la quasi-totalité des infractions sexuelles sur mineur, le délai ne court pas pendant la minorité de la victime — il commence à courir à ses 18 ans. Résultat : une victime agredée à 10 ans dispose de 30 ans à partir de ses 18 ans pour porter plainte pour viol, soit jusqu'à ses 48 ans.</p>
       </div>
     </div>
   </div>
@@ -852,6 +939,14 @@ footer span{color:var(--rv)}
       <div class="retenir">
         <strong>Intérêt de la CJIP</strong>
         Si la personne morale passe devant le juge, la sanction peut être plus lourde. La plupart du temps, les sociétés l'acceptent pour protéger leur réputation : c'est une gestion des risques.
+      </div>
+
+      <div class="cm-wrap" style="margin-top:.9rem">
+        <h4>📖 CM — Alternatives aux poursuites : une graduation</h4>
+        <p>Il existe une véritable graduation entre les différents outils à disposition du procureur, du moins contraignant au plus sévère :</p>
+        <p><strong>Mesures de l'art. 41-1 (avertissement, stage, réparation…) :</strong> ce sont des mesures unilatérales proposées par le procureur. Elles ne nécessitent pas la reconnaissance de culpabilité. Elles ne suspendent pas l'action publique — le procureur reste libre de poursuivre si la mesure échoue. L'avertissement probatoire remplace depuis 2023 le « rappel à la loi ».</p>
+        <p><strong>Composition pénale (art. 41-2) :</strong> plus sérieuse. La personne doit reconnaître les faits. Elle peut inclure une amende, un travail non rémunéré, des interdictions diverses. Un juge valide. Si elle est exécutée, l'action publique est éteinte.</p>
+        <p><strong>CRPC :</strong> la seule qui permet de prononcer une peine d'emprisonnement dans le cadre d'une alternative. La personne reconnaît les faits et accepte la peine proposée. Un juge homologue. Si c'est refusé, on repart en procédure classique.</p>
       </div>
     </div>
   </div>
@@ -930,6 +1025,13 @@ footer span{color:var(--rv)}
         <div class="art-item"><strong>Art. 5 CPP</strong> — <em>Electa una via</em> : une victime qui choisit le juge civil ne peut plus aller au pénal ensuite, sauf si le procureur a saisi le juge pénal avant qu'un jugement civil définitif ne soit rendu.</div>
         <div class="art-item"><strong>Art. 85 CPP</strong> — Une victime peut se constituer partie civile devant le juge d'instruction après plainte, mais seulement si le procureur ne poursuit pas ou après 3 mois sans réponse.</div>
       </div>
+
+      <div class="cm-wrap" style="margin-top:.9rem">
+        <h4>📖 CM — Action civile : deux voies, une logique</h4>
+        <p>Quand une infraction cause un préjudice, la victime peut obtenir réparation de deux façons. Soit elle se constitue <strong>partie civile dans le procès pénal</strong> — c'est pratique car on profite de l'enquête déjà menée, et le juge répressif statue sur les dommages en même temps que sur la culpabilité. Soit elle saisit le <strong>juge civil</strong> séparément.</p>
+        <p>Le principe <em>electa una via</em> (art. 5 CPP) interdit de courir les deux à la fois : si la victime a d'abord saisi le juge civil et que celui-ci a rendu un jugement définitif sur le fond, elle ne peut plus ensuite se constituer partie civile au pénal pour les mêmes faits. L'inverse est vrai aussi : si le pénal est déjà en cours, la voie civile est suspendue.</p>
+        <p><strong>Attention :</strong> même si la personne est <em>relaxée</em> au pénal (pas coupable pénalement), le juge peut quand même la condamner à indemniser la victime si une faute civile est démontrée. Pénal et civil ne se recoupent pas entièrement.</p>
+      </div>
     </div>
     <div class="fiche">
       <h3>Jurisprudence</h3>
@@ -971,6 +1073,13 @@ footer span{color:var(--rv)}
         <span class="art-title">Articles clés</span>
         <div class="art-item"><strong>Art. 2-1 à 2-25 CPP ★</strong> — Les associations qui ont au moins 5 ans d'activité peuvent se constituer partie civile avec l'accord de la victime.</div>
         <div class="art-item"><strong>Art. L142-2 Code de l'environnement</strong> — Les associations environnementales agréées peuvent se constituer partie civile pour défendre l'environnement contre des infractions.</div>
+      </div>
+
+      <div class="cm-wrap" style="margin-top:.9rem">
+        <h4>📖 CM — Associations et syndicats : quand peuvent-ils agir ?</h4>
+        <p>Une association ne peut pas se constituer partie civile pour n'importe quelle infraction. Il faut soit que l'infraction porte atteinte à <strong>l'intérêt collectif qu'elle défend</strong> (et que ce lien soit direct et précis), soit qu'elle subisse un préjudice propre. La loi autorise certaines associations à agir pour des infractions spécifiques : associations de lutte contre le racisme, associations de protection de l'environnement, etc.</p>
+        <p>Pour les associations, deux conditions principales : <strong>exister depuis au moins 5 ans</strong> et agir dans le domaine de l'infraction poursuivie. Dans certains cas, l'accord de la victime est aussi requis.</p>
+        <p>Les syndicats suivent une logique similaire : ils peuvent agir si l'infraction porte atteinte à l'intérêt collectif de la profession qu'ils représentent — mais le lien doit être suffisamment caractérisé. Un syndicat ne peut pas se constituer partie civile pour tout ce qui touche de loin à ses membres.</p>
       </div>
     </div>
     <div class="fiche">
@@ -1092,6 +1201,12 @@ footer span{color:var(--rv)}
       <div class="art-item"><strong>Art. 105 CPP</strong> — Une personne contre laquelle il existe des indices graves et concordants ne peut pas être entendue comme simple témoin par le juge d'instruction.</div>
       <div class="art-item"><strong>Art. 113-6 CPP</strong> — Le témoin assisté peut demander à tout moment à être mis en examen (et obtient alors immédiatement les droits de la défense).</div>
     </div>
+
+    <div class="cm-wrap">
+      <h4>📖 CM — Bien distinguer mis en examen et témoin assisté</h4>
+      <p>Le <strong>mis en examen</strong> est une personne contre laquelle existent des indices plus solides : elle devient pleinement partie au dossier, avec des droits renforcés, mais elle s'expose aussi aux mesures de contrainte.</p>
+      <p>Le <strong>témoin assisté</strong>, lui, est dans une position intermédiaire : il est déjà suspecté, donc il n'est plus un simple témoin, mais on considère qu'on n'a pas encore assez d'éléments pour une mise en examen. C'est une forme de <em>statut tampon</em>, protecteur mais moins lourd.</p>
+    </div>
   </div>
 </div>
 
@@ -1160,6 +1275,12 @@ footer span{color:var(--rv)}
           <li>L'ordonnance de renvoi purge définitivement les vices de procédure</li>
         </ul>
       </div>
+
+      <div class="cm-wrap">
+        <h4>📖 CM — Pourquoi le régime est si strict</h4>
+        <p>En instruction, on peut faire annuler des actes <strong>avant même le procès</strong>. C'est utile pour nettoyer le dossier au fur et à mesure, mais cela oblige les parties à réagir vite.</p>
+        <p>L'idée du CM est simple : on ne doit pas attendre la fin pour sortir toutes les nullités d'un coup. D'où les mécanismes de <strong>forclusion</strong> (on perd le droit d'invoquer trop tard) et de <strong>purge</strong> (ce qui n'a pas été soulevé au bon moment ne pourra plus l'être ensuite, sauf si c'était impossible à connaître).</p>
+      </div>
     </div>
     <div class="fiche">
       <h3>La clôture</h3>
@@ -1170,6 +1291,12 @@ footer span{color:var(--rv)}
       <div class="bloc">
         <h4>Les parties peuvent provoquer la clôture</h4>
         <p>Après un an en matière délictuelle ou dix-huit mois en matière criminelle, elles peuvent demander au juge de clore. Le juge a un mois pour répondre.</p>
+      </div>
+
+      <div class="cm-wrap">
+        <h4>📖 CM — La phase de règlement en pratique</h4>
+        <p>La clôture n'est pas une simple formalité : c'est le <strong>dernier échange contradictoire</strong> avant que le juge décide de l'issue du dossier. Le parquet et les parties peuvent encore écrire, demander, répondre et discuter.</p>
+        <p>Autrement dit, avant de dire « on renvoie » ou « on arrête », le juge doit laisser chacun s'exprimer une dernière fois. C'est ce qui donne à l'instruction son vrai visage juridictionnel.</p>
       </div>
     </div>
   </div>
@@ -1185,6 +1312,12 @@ footer span{color:var(--rv)}
         <li><strong>Le renvoi aux fins de CRPC (art. 180-1)</strong> si la personne reconnaît les faits, avec l'accord de toutes les parties.</li>
         <li><strong>L'ordonnance d'irresponsabilité pénale</strong> pour trouble mental : constate que les faits sont établis mais que le discernement était aboli.</li>
       </ul>
+    </div>
+
+    <div class="cm-wrap">
+      <h4>📖 CM — Comment raisonner sur les issues</h4>
+      <p>Le réflexe utile est de se poser une seule question : <strong>y a-t-il assez de charges pour juger quelqu'un ?</strong></p>
+      <p>Si non, on va vers le <strong>non-lieu</strong>. Si oui, il faut ensuite regarder <strong>la nature de l'infraction</strong> : délit ou contravention = renvoi devant un tribunal ; crime = mise en accusation. La CRPC et l'irresponsabilité pénale sont des voies particulières à garder en tête, mais elles restent des issues plus spéciales.</p>
     </div>
   </div>
 
@@ -1248,6 +1381,23 @@ footer span{color:var(--rv)}
   </div>
 
   <div class="fiche" style="margin-top:1rem">
+    <div class="arts">
+      <span class="art-title">Articles clés</span>
+      <div class="art-item"><strong>Art. 171 CPP ★</strong> — La nullité peut être prononcée en cas de violation d'une formalité substantielle ou d'une règle d'ordre public.</div>
+      <div class="art-item"><strong>Art. 172 CPP</strong> — La personne concernée peut renoncer à une nullité, mais cette renonciation doit être expresse et entourée de garanties.</div>
+      <div class="art-item"><strong>Art. 173 et s. CPP ★</strong> — En instruction, la chambre de l'instruction est compétente pour examiner les requêtes en nullité.</div>
+      <div class="art-item"><strong>Art. 174 CPP</strong> — La décision rendue purge les nullités qui auraient dû être soulevées à ce stade.</div>
+      <div class="art-item"><strong>Art. 802 CPP ★</strong> — En principe, pas de nullité sans grief lorsque l'irrégularité porte atteinte aux intérêts de la personne concernée.</div>
+    </div>
+
+    <div class="cm-wrap">
+      <h4>📖 CM — À quoi sert une nullité ?</h4>
+      <p>Une nullité ne sert pas à « punir » l'enquêteur ou le juge. Elle sert à <strong>écarter un acte irrégulier</strong> du dossier lorsqu'une règle essentielle de procédure n'a pas été respectée.</p>
+      <p>Le vrai enjeu est pratique : si l'acte tombe, il peut entraîner la chute d'autres actes pris grâce à lui. C'est pour cela qu'en cas pratique, les nullités arrivent souvent à la fin : une fois qu'on a identifié les actes, on vérifie s'ils restent juridiquement utilisables.</p>
+    </div>
+  </div>
+
+  <div class="fiche" style="margin-top:1rem">
     <h3>Méthode cas pratique</h3>
     <div class="bloc">
       <h4>Raisonnement en 3 étapes</h4>
@@ -1261,6 +1411,477 @@ footer span{color:var(--rv)}
       <strong>Support exclusif vs non exclusif</strong>
       Si l'acte annulé est le support nécessaire d'actes suivants → ces actes tombent aussi (nullité en cascade). Si les actes suivants ont un fondement indépendant → ils ne tombent pas automatiquement.
     </div>
+
+    <div class="cm-wrap">
+      <h4>📖 CM — Le bon ordre de raisonnement</h4>
+      <p>Le professeur insiste sur une méthode très simple : hors nullité d'ordre public, il faut raisonner dans cet ordre <strong>intérêt → qualité → grief</strong>. Il ne faut pas commencer directement par dire qu'une règle a été violée.</p>
+      <p>En clair : la personne peut-elle se plaindre de <em>cet</em> acte ? est-elle bien la personne protégée par la règle ? et surtout, qu'est-ce que cette irrégularité lui a concrètement fait perdre ? Sans cela, la nullité échoue souvent.</p>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="fiche">
+      <h3>Qui peut invoquer la nullité ?</h3>
+      <div class="bloc">
+        <h4>Réflexe à avoir</h4>
+        <ul>
+          <li>On ne peut pas invoquer l'irrégularité subie par un <strong>tiers</strong></li>
+          <li>Il faut être la personne que la règle cherchait à <strong>protéger</strong></li>
+          <li>En instruction, la contestation passe en principe par la <strong>chambre de l'instruction</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fiche">
+      <h3>Effets de l'annulation</h3>
+      <div class="bloc">
+        <h4>Nullité en cascade</h4>
+        <p>L'acte irrégulier disparaît du dossier. Les actes suivants tombent aussi seulement s'ils reposaient <strong>nécessairement et uniquement</strong> sur cet acte annulé.</p>
+      </div>
+      <div class="bloc">
+        <h4>Autre support</h4>
+        <p>Si un acte plus tardif pouvait aussi être justifié par un autre élément régulier du dossier, il peut être sauvé. C'est la grande idée du <em>support exclusif</em> ou non exclusif.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="fiche">
+    <h3>Jurisprudence utile (CM)</h3>
+    <div class="jp-block cm">
+      <span class="jp-title">Cass., 7 septembre 2021 <span class="badge badge-cm">CM</span></span>
+      <span class="jp-rule">Hors nullité d'ordre public, le juge doit vérifier successivement l'intérêt, la qualité, puis le grief du requérant.</span>
+    </div>
+    <div class="jp-block cm">
+      <span class="jp-title">Cass., 13 février 2024 <span class="badge badge-cm">CM</span></span>
+      <span class="jp-rule">Le grief ne se confond pas avec le simple fait que l'acte irrégulier a permis de trouver une preuve à charge.</span>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+
+<!-- ═════════════════════════════════════════ FLASHCARDS ═══ -->
+<div id="page-fc" class="page-content">
+<div style="padding:1rem 1.5rem 0"><label class="btn-home" for="r-home">← Accueil</label></div>
+<main>
+
+<div class="partie">
+  <div class="partie-titre"><span class="pnum">Bonus</span><h2>Flashcards par fiche</h2></div>
+
+  <div class="fiche">
+    <div class="flash-intro">
+      <p><strong>Niveau 1</strong> : retenir les notions, mécanismes, distinctions et logiques de cours de chaque fiche, sans exiger la mémorisation des numéros d'articles ou des dates.</p>
+      <p><strong>Niveau 2</strong> : retenir les références à savoir restituer avec un <strong>numéro d'article</strong> ou une <strong>année de jurisprudence</strong>, fiche par fiche.</p>
+      <p>Chaque question s'ouvre au clic. L'idée est de te tester activement, pas seulement de relire passivement le support.</p>
+    </div>
+
+    <div class="flash-player">
+      <h3>Réviser</h3>
+
+      <div class="flash-start" id="flash-start">
+        <h4>Prépare ta session</h4>
+        <p>Choisis d'abord la fiche à travailler et le niveau à réviser. Tu peux aussi tout mélanger si tu veux une session complète.</p>
+
+        <div class="flash-toolbar">
+          <div>
+            <label for="flash-fiche">Fiche</label>
+            <select id="flash-fiche">
+              <option value="all">Toutes les fiches</option>
+            </select>
+          </div>
+          <div>
+            <label for="flash-level">Niveau</label>
+            <select id="flash-level">
+              <option value="all">Tous les niveaux</option>
+              <option value="Niveau 1">Niveau 1</option>
+              <option value="Niveau 2">Niveau 2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flash-start-actions">
+          <button type="button" class="flash-start-btn" id="flash-start-btn">Commencer la session</button>
+        </div>
+      </div>
+
+      <div class="flash-stage" id="flash-stage" hidden>
+        <div class="flash-quizlet">
+          <div class="flash-progress">
+            <div id="flash-eyebrow"></div>
+            <div id="flash-count">Chargement des cartes…</div>
+          </div>
+          <div class="flash-stats">
+            <div class="flash-stat">Cartes vues <strong id="flash-seen">0</strong></div>
+            <div class="flash-stat">À revoir <strong id="flash-bad">0</strong></div>
+            <div class="flash-stat">Maîtrisées <strong id="flash-good">0</strong></div>
+          </div>
+          <div class="flash-card-shell">
+            <button type="button" class="flash-card-btn" id="flash-card">
+              <div class="flash-face-label" id="flash-face-label">Question</div>
+              <div class="flash-card-text" id="flash-card-text"></div>
+              <div class="flash-card-foot">Clique sur la carte pour la retourner</div>
+            </button>
+          </div>
+          <div class="flash-feedback" id="flash-feedback" hidden>
+            <button type="button" class="flash-feedback-btn bad" id="flash-mark-bad">À revoir</button>
+            <button type="button" class="flash-feedback-btn good" id="flash-mark-good">Je connais</button>
+          </div>
+          <div class="flash-nav">
+            <button type="button" class="flash-nav-btn" id="flash-prev">Precedent</button>
+            <div class="flash-count" id="flash-progress-text"></div>
+            <button type="button" class="flash-nav-btn primary" id="flash-next">Suivant</button>
+            <button type="button" class="flash-nav-btn toggle" id="flash-review-only">Revoir les cartes faibles</button>
+            <button type="button" class="flash-nav-btn" id="flash-shuffle">Melanger</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash-empty" id="flash-empty" hidden>Aucune carte ne correspond au filtre choisi.</div>
+    </div>
+  </div>
+
+  <div class="flash-library">
+    <h3>Bibliothèque des cartes</h3>
+    <p class="def">Vue d'ensemble en tableau, sans ouverture/fermeture carte par carte.</p>
+    <div class="flash-library-body">
+      <div class="tw">
+        <table>
+          <thead>
+            <tr><th>Fiche</th><th>Niveau</th><th>Question</th><th>Réponse</th></tr>
+          </thead>
+          <tbody id="flash-library-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="flash-source">
+  <div class="fiche">
+    <h3>Fiche #1 — Cadres d'enquête</h3>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 1 — Notions et mécanismes</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Qu'est-ce qui caractérise d'abord l'enquête de flagrance ?</summary><div class="flash-answer">C'est une enquête d'<strong>urgence</strong>, plus coercitive que la préliminaire, destinée à empêcher la disparition rapide des preuves.</div></details>
+          <details class="flashcard"><summary>Quels sont les deux critères de la flagrance au sens strict ?</summary><div class="flash-answer">Un critère <strong>temporel</strong> (infraction en train de se commettre ou venant de se commettre) et un critère d'<strong>apparence</strong> (indices visibles, traces, objets, clameur publique).</div></details>
+          <details class="flashcard"><summary>Pourquoi une dénonciation anonyme seule ne suffit-elle pas à établir la flagrance ?</summary><div class="flash-answer">Parce qu'il faut des <strong>indices apparents et concrets</strong>. L'information anonyme doit être corroborée par des constatations ultérieures.</div></details>
+          <details class="flashcard"><summary>Que signifie l'idée de « temps très voisin » en matière de flagrance ?</summary><div class="flash-answer">La loi ne le définit pas précisément : c'est une notion <strong>souple</strong>, appréciée par la jurisprudence selon la proximité réelle entre les faits et l'intervention.</div></details>
+          <details class="flashcard"><summary>Quelle est la durée normale de l'enquête de flagrance ?</summary><div class="flash-answer"><strong>8 jours</strong> sans discontinuer, avec possible prolongation de <strong>8 jours</strong> supplémentaires pour les infractions les plus graves.</div></details>
+          <details class="flashcard"><summary>Que se passe-t-il quand la flagrance est terminée ou hors délai ?</summary><div class="flash-answer">On bascule en <strong>enquête préliminaire</strong>. Les actes faits hors délai sous couvert de la flagrance risquent la nullité.</div></details>
+          <details class="flashcard"><summary>Quelles situations sont assimilées à la flagrance sans être une flagrance classique ?</summary><div class="flash-answer">La recherche des <strong>causes de la mort</strong>, certaines <strong>disparitions inquiétantes</strong> et la recherche d'une <strong>personne en fuite</strong>, parce que l'urgence justifie des pouvoirs renforcés.</div></details>
+          <details class="flashcard"><summary>Pourquoi dit-on que l'enquête préliminaire est subsidiaire ?</summary><div class="flash-answer">Parce qu'elle couvre <strong>tout ce qui ne relève pas</strong> de la flagrance ou d'un régime assimilé : c'est le cadre d'enquête de droit commun par défaut.</div></details>
+          <details class="flashcard"><summary>Quelle est l'idée directrice de l'enquête préliminaire par rapport à la contrainte ?</summary><div class="flash-answer">Elle est en principe <strong>moins coercitive</strong> : beaucoup d'actes supposent l'accord de la personne, sauf dérogations légales.</div></details>
+          <details class="flashcard"><summary>Comment l'enquête préliminaire est-elle aujourd'hui encadrée dans le temps ?</summary><div class="flash-answer">Elle est enfermée dans un délai maximal, avec <strong>prolongations motivées</strong>. Une fois le délai expiré, les actes postérieurs sont en principe irréguliers.</div></details>
+          <details class="flashcard"><summary>Que faut-il retenir de l'accès au dossier en enquête préliminaire ?</summary><div class="flash-answer">Il reste <strong>limité et ponctuel</strong> : l'enquête préliminaire demeure globalement secrète, contrairement à l'instruction qui est contradictoire.</div></details>
+          <details class="flashcard"><summary>Le régime de criminalité organisée constitue-t-il un troisième type d'enquête ?</summary><div class="flash-answer">Non. C'est une <strong>couche dérogatoire</strong> qui peut se superposer à la flagrance, à la préliminaire ou à l'instruction.</div></details>
+          <details class="flashcard"><summary>Pourquoi le régime dérogatoire existe-t-il ?</summary><div class="flash-answer">Pour donner des <strong>moyens renforcés</strong> face à des infractions complexes, structurées et difficiles à prouver, tout en les confiant à des juridictions spécialisées.</div></details>
+          <details class="flashcard"><summary>Quelles sont les deux grandes conditions d'application du régime de criminalité organisée ?</summary><div class="flash-answer">L'infraction doit entrer dans une <strong>liste légale</strong> et relever, en principe, de la <strong>bande organisée</strong> ou d'une logique équivalente prévue par la loi.</div></details>
+        </div>
+      </div>
+    </details>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 2 — Articles et jurisprudences</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Art. 53 CPP ?</summary><div class="flash-answer"><strong>Définition de la flagrance</strong> et point de départ du régime de flagrance.</div></details>
+          <details class="flashcard"><summary>Art. 54 CPP ?</summary><div class="flash-answer"><strong>Obligation de l'OPJ</strong> informé d'un crime flagrant : aviser le procureur, se transporter sur les lieux et conserver les preuves.</div></details>
+          <details class="flashcard"><summary>Art. 73 CPP ?</summary><div class="flash-answer"><strong>Appréhension citoyenne</strong> de l'auteur d'un crime ou délit flagrant.</div></details>
+          <details class="flashcard"><summary>Art. 74 / 74-1 / 74-2 CPP ?</summary><div class="flash-answer"><strong>Hypothèses assimilées à la flagrance</strong> : causes de la mort, disparition inquiétante, personne en fuite.</div></details>
+          <details class="flashcard"><summary>Art. 75 CPP ?</summary><div class="flash-answer"><strong>Fondement de l'enquête préliminaire</strong>, menée par les enquêteurs d'office ou sur instruction du procureur.</div></details>
+          <details class="flashcard"><summary>Art. 75-3 CPP ?</summary><div class="flash-answer"><strong>Durée maximale</strong> de l'enquête préliminaire et régime des prolongations.</div></details>
+          <details class="flashcard"><summary>Art. 77-2 CPP ?</summary><div class="flash-answer"><strong>Accès ponctuel au dossier</strong> pour certaines personnes en enquête préliminaire.</div></details>
+          <details class="flashcard"><summary>Art. 706-73 et 706-73-1 CPP ?</summary><div class="flash-answer"><strong>Listes d'infractions</strong> ouvrant le régime dérogatoire de criminalité organisée.</div></details>
+          <details class="flashcard"><summary>Art. 706-74 CPP ?</summary><div class="flash-answer"><strong>Extension possible</strong> de certaines règles dérogatoires à d'autres infractions prévues par la loi.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 1991 sur la flagrance ?</summary><div class="flash-answer">Un délai d'environ <strong>28 heures</strong> peut encore rester compatible avec la flagrance.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 1998 sur la flagrance ?</summary><div class="flash-answer"><strong>Six jours</strong> après les faits, la flagrance est exclue.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2007 sur la dénonciation anonyme ?</summary><div class="flash-answer">Une <strong>dénonciation anonyme seule</strong> ne suffit pas à caractériser la flagrance.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2011 sur l'enquête préliminaire ?</summary><div class="flash-answer">Une enquête préliminaire peut <strong>devenir flagrante</strong> à condition de ne pas l'avoir déjà été.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2014 sur l'information anonyme ?</summary><div class="flash-answer">Un renseignement anonyme <strong>corroboré</strong> par des constatations ultérieures peut suffire à caractériser la flagrance.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2024 et 2025 du TD sur la flagrance ?</summary><div class="flash-answer">Elles rappellent que des <strong>indices concrets préalables</strong> peuvent justifier les pouvoirs de flagrance, même si les enquêteurs raisonnaient d'abord autrement.</div></details>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="fiche">
+    <h3>Fiche #2 — Actes d'enquête</h3>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 1 — Notions et mécanismes</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Quel est le principe général en matière de preuve pénale ?</summary><div class="flash-answer">La preuve est en principe <strong>libre</strong> et le juge se décide selon son <strong>intime conviction</strong>, à partir d'éléments débattus contradictoirement.</div></details>
+          <details class="flashcard"><summary>Pourquoi parle-t-on aussi de loyauté et de proportionnalité de la preuve ?</summary><div class="flash-answer">Parce que la recherche de la preuve ne peut pas tout justifier : certains procédés portent trop atteinte aux <strong>droits fondamentaux</strong> ou faussent la recherche de la vérité.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce qu'une perquisition ?</summary><div class="flash-answer">C'est l'entrée dans un <strong>lieu clos</strong> pour y rechercher et saisir des objets, documents ou données utiles à la manifestation de la vérité.</div></details>
+          <details class="flashcard"><summary>Quelle différence centrale faut-il retenir entre perquisition en flagrance et en préliminaire ?</summary><div class="flash-answer">En <strong>flagrance</strong>, pas besoin d'assentiment. En <strong>préliminaire</strong>, l'accord de la personne est le principe, sauf autorisation judiciaire.</div></details>
+          <details class="flashcard"><summary>Quelle règle pratique gouverne la présence lors de la perquisition ?</summary><div class="flash-answer">La personne concernée doit être <strong>présente</strong> ou représentée ; à défaut, on recourt à des <strong>témoins</strong>.</div></details>
+          <details class="flashcard"><summary>Quelles sont les heures normales d'une perquisition ?</summary><div class="flash-answer">Elle doit en principe <strong>commencer entre 6h et 21h</strong>, sauf régimes spéciaux ou autorisations particulières.</div></details>
+          <details class="flashcard"><summary>Pourquoi les professions protégées ont-elles un régime de perquisition renforcé ?</summary><div class="flash-answer">Parce qu'il faut protéger des <strong>secrets professionnels sensibles</strong>, en particulier les droits de la défense, les sources journalistiques ou certains secrets médicaux.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce que la géolocalisation en procédure pénale ?</summary><div class="flash-answer">C'est la possibilité de <strong>localiser en temps réel</strong> une personne, un objet ou un véhicule grâce à un dispositif technique.</div></details>
+          <details class="flashcard"><summary>Pourquoi la géolocalisation est-elle particulièrement encadrée ?</summary><div class="flash-answer">Parce qu'elle porte une atteinte sérieuse à la <strong>vie privée</strong>, surtout lorsqu'elle touche un téléphone ou des données personnelles fines.</div></details>
+          <details class="flashcard"><summary>Comment fonctionne la géolocalisation en urgence ?</summary><div class="flash-answer">L'OPJ peut parfois agir immédiatement, mais le <strong>magistrat doit être informé très vite</strong> et confirmer la mesure dans le délai prévu.</div></details>
+          <details class="flashcard"><summary>À quoi servent les réquisitions ?</summary><div class="flash-answer">À contraindre un organisme ou une administration à <strong>remettre des informations utiles</strong> : documents bancaires, données téléphoniques, pièces administratives, etc.</div></details>
+          <details class="flashcard"><summary>Que faut-il retenir des écoutes téléphoniques ?</summary><div class="flash-answer">En régime général, elles sont surtout pensées pour l'<strong>instruction</strong>. En enquête, elles sont largement réservées aux hypothèses de <strong>criminalité organisée</strong>.</div></details>
+          <details class="flashcard"><summary>Quelle limite absolue s'applique aux écoutes concernant l'avocat ?</summary><div class="flash-answer">Les échanges relevant de l'<strong>exercice des droits de la défense</strong> ne peuvent pas être transcrits.</div></details>
+          <details class="flashcard"><summary>Quelle logique commune unit les techniques spéciales d'enquête ?</summary><div class="flash-answer">Elles sont réservées aux affaires les plus graves, sous <strong>contrôle judiciaire renforcé</strong>, pour permettre des investigations plus intrusives que les actes ordinaires.</div></details>
+          <details class="flashcard"><summary>Quelles techniques spéciales faut-il savoir citer en priorité ?</summary><div class="flash-answer"><strong>Surveillance étendue</strong>, <strong>infiltration</strong>, <strong>enquête sous pseudonyme</strong>, avec l'idée générale de lutte contre les réseaux organisés.</div></details>
+        </div>
+      </div>
+    </details>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 2 — Articles et jurisprudences</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Art. 427 CPP ?</summary><div class="flash-answer"><strong>Liberté de la preuve</strong> et intime conviction, sous réserve du contradictoire.</div></details>
+          <details class="flashcard"><summary>Art. 56 CPP ?</summary><div class="flash-answer"><strong>Base des perquisitions</strong> et saisies en enquête de flagrance.</div></details>
+          <details class="flashcard"><summary>Art. 56-1 CPP ?</summary><div class="flash-answer"><strong>Perquisition chez l'avocat</strong> sous garanties renforcées et en présence du bâtonnier.</div></details>
+          <details class="flashcard"><summary>Art. 57 CPP ?</summary><div class="flash-answer"><strong>Présence de l'occupant</strong> ou, à défaut, de témoins lors de la perquisition.</div></details>
+          <details class="flashcard"><summary>Art. 59 et 59-1 CPP ?</summary><div class="flash-answer"><strong>Heures légales</strong> de la perquisition et exceptions permettant la perquisition de nuit.</div></details>
+          <details class="flashcard"><summary>Art. 76 CPP ?</summary><div class="flash-answer"><strong>Perquisition en enquête préliminaire</strong> : principe d'assentiment, sauf autorisation judiciaire.</div></details>
+          <details class="flashcard"><summary>Art. 92 CPP ?</summary><div class="flash-answer"><strong>Pouvoir du juge d'instruction</strong> de se transporter sur place et de perquisitionner.</div></details>
+          <details class="flashcard"><summary>Art. 230-32 à 230-35 CPP ?</summary><div class="flash-answer"><strong>Régime général de la géolocalisation</strong> : conditions, autorisation, installation et urgence.</div></details>
+          <details class="flashcard"><summary>Art. 230-34-1 CPP ?</summary><div class="flash-answer"><strong>Activation à distance d'un appareil électronique</strong> à des fins de localisation.</div></details>
+          <details class="flashcard"><summary>Art. 8 CEDH dans la fiche ?</summary><div class="flash-answer"><strong>Protection de la vie privée</strong>, particulièrement importante pour la géolocalisation et les données de connexion.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2020 sur la vidéosurveillance ?</summary><div class="flash-answer">La vidéosurveillance peut être admise en enquête préliminaire sous <strong>contrôle du parquet</strong> et avec un cadre proportionné.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2023 sur les perquisitions chez l'avocat ?</summary><div class="flash-answer">Le contrôle de la chambre de l'instruction doit être <strong>intégral</strong>, en fait et en droit.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2024 sur la fiche 2 ?</summary><div class="flash-answer">Elles portent notamment sur la <strong>réquisition d'images existantes</strong>, la <strong>saisie chez l'avocat</strong>, les <strong>fadettes</strong> et les conditions de <strong>nullité d'une géolocalisation</strong>.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2025 sur la géolocalisation ?</summary><div class="flash-answer">L'exploitation d'un <strong>dispositif de géolocalisation déjà embarqué</strong> peut être jugée régulière si elle reste une simple exploitation de données existantes.</div></details>
+          <details class="flashcard"><summary>Art. 14 et 41 CPP ?</summary><div class="flash-answer"><strong>Rôle de la police judiciaire</strong> et du <strong>procureur</strong> dans la recherche des preuves.</div></details>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="fiche">
+    <h3>Fiche #3 — Garde à vue et audition libre</h3>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 1 — Notions et mécanismes</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>À quelles deux conditions de fond peut-on placer une personne en garde à vue ?</summary><div class="flash-answer">Il faut des <strong>raisons plausibles de soupçonner</strong> la commission d'un crime ou délit puni d'emprisonnement, et la GAV doit être l'<strong>unique moyen</strong> d'atteindre au moins un objectif légal de l'enquête.</div></details>
+          <details class="flashcard"><summary>Qui décide le placement en garde à vue ?</summary><div class="flash-answer">Seul un <strong>OPJ</strong> peut décider du placement, sous le contrôle immédiat du procureur ou, selon le cadre, du juge d'instruction.</div></details>
+          <details class="flashcard"><summary>Pourquoi l'information immédiate du procureur est-elle si importante ?</summary><div class="flash-answer">Parce qu'elle conditionne le <strong>contrôle de la mesure</strong>. Un retard injustifié entraîne en principe la nullité.</div></details>
+          <details class="flashcard"><summary>Quelles durées maximales faut-il connaître pour la GAV ?</summary><div class="flash-answer"><strong>24h + 24h</strong> en droit commun, jusqu'à <strong>96h</strong> en criminalité organisée, jusqu'à <strong>144h</strong> dans certains dossiers de terrorisme.</div></details>
+          <details class="flashcard"><summary>Quels droits doivent être notifiés immédiatement en GAV ?</summary><div class="flash-answer">La mesure, ses motifs, sa durée possible, le <strong>droit au silence</strong>, le droit au <strong>médecin</strong>, à l'<strong>avocat</strong>, à prévenir un proche, à un interprète si besoin.</div></details>
+          <details class="flashcard"><summary>Quelle distinction faut-il retenir entre droits longs et droits courts ?</summary><div class="flash-answer">Les <strong>droits longs</strong> n'ont pas à être renotifiés à chaque prolongation, alors que les <strong>droits courts</strong> doivent l'être.</div></details>
+          <details class="flashcard"><summary>Quel est le rôle de l'avocat en garde à vue ?</summary><div class="flash-answer">Il peut s'entretenir confidentiellement avec la personne, assister aux auditions et confrontations sur demande, consulter certaines pièces limitées et formuler des observations.</div></details>
+          <details class="flashcard"><summary>L'avocat en GAV a-t-il accès à tout le dossier ?</summary><div class="flash-answer">Non. Son accès est <strong>limité</strong>, bien moindre qu'en instruction.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce qui distingue l'audition libre du suspect de la garde à vue ?</summary><div class="flash-answer">La personne entendue librement reste <strong>libre de partir</strong>. Dès qu'une contrainte devient nécessaire, on doit basculer en GAV.</div></details>
+          <details class="flashcard"><summary>Peut-on faire une audition libre sous contrainte ?</summary><div class="flash-answer">Non. Une <strong>audition libre sous contrainte</strong> est contradictoire dans les termes : la contrainte impose la GAV.</div></details>
+          <details class="flashcard"><summary>Que se passe-t-il si des soupçons apparaissent pendant l'audition d'une personne d'abord non suspectée ?</summary><div class="flash-answer">Il faut immédiatement lui notifier les <strong>droits du suspect</strong> ou la placer en GAV si la contrainte devient nécessaire.</div></details>
+          <details class="flashcard"><summary>Le témoin entendu librement a-t-il droit à un avocat ?</summary><div class="flash-answer">Non, car il n'est pas une <strong>partie</strong> ni un suspect juridiquement traité comme tel dans cette phase.</div></details>
+          <details class="flashcard"><summary>Comment calcule-t-on le point de départ de la GAV ?</summary><div class="flash-answer">À partir du moment où la personne est <strong>effectivement à la disposition des enquêteurs</strong>, pas seulement de la formalisation écrite.</div></details>
+          <details class="flashcard"><summary>Quelle règle gouverne les successions de GAV pour les mêmes faits ?</summary><div class="flash-answer">La GAV fonctionne comme un <strong>crédit-temps</strong> : le temps déjà consommé s'impute sur une nouvelle mesure pour les mêmes faits.</div></details>
+          <details class="flashcard"><summary>Et pour des faits différents ?</summary><div class="flash-answer">Si les mesures sont <strong>discontinues</strong>, les délais se distinguent. Si elles se suivent sans libération, on regarde la <strong>durée cumulée</strong>.</div></details>
+        </div>
+      </div>
+    </details>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 2 — Articles et jurisprudences</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Art. 62-2 CPP ?</summary><div class="flash-answer"><strong>Conditions et objectifs</strong> du placement en garde à vue.</div></details>
+          <details class="flashcard"><summary>Art. 63 CPP ?</summary><div class="flash-answer"><strong>Décision de placement</strong>, information immédiate du procureur et durée de droit commun.</div></details>
+          <details class="flashcard"><summary>Art. 63-1 à 63-4 CPP ?</summary><div class="flash-answer"><strong>Notification des droits</strong>, proche, médecin, avocat et entretien confidentiel.</div></details>
+          <details class="flashcard"><summary>Art. 65 CPP ?</summary><div class="flash-answer">Lorsque la personne est interrogée sur <strong>d'autres faits</strong>, elle doit être de nouveau informée de ses droits pertinents.</div></details>
+          <details class="flashcard"><summary>Art. 61 et 61-1 CPP ?</summary><div class="flash-answer"><strong>Audition libre</strong> et droits du suspect entendu sans garde à vue.</div></details>
+          <details class="flashcard"><summary>Art. 62 al. 4 CPP ?</summary><div class="flash-answer"><strong>Audition de la personne non soupçonnée</strong> et obligation de basculer si des soupçons apparaissent.</div></details>
+          <details class="flashcard"><summary>Art. 78 CPP ?</summary><div class="flash-answer"><strong>Convocation en enquête préliminaire</strong> et possibilité de contrainte pour comparaître, sous conditions.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2015 en GAV ?</summary><div class="flash-answer">Les <strong>droits courts</strong> doivent être renotifiés lors de la prolongation.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2016 en GAV ?</summary><div class="flash-answer">Les <strong>droits longs</strong>, comme le droit au silence, n'ont pas à être renotifiés à chaque prolongation.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2021 sur l'avocat ?</summary><div class="flash-answer">En cas de nouveaux faits, la personne doit pouvoir s'entretenir avec son avocat <strong>avant l'audition</strong> si elle l'a demandé.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2022 sur les séances d'identification ?</summary><div class="flash-answer">La présence de l'<strong>avocat</strong> doit être respectée ; sinon, atteinte à la loyauté de la preuve.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2023 de la fiche ?</summary><div class="flash-answer">Elles portent sur l'<strong>extension à de nouveaux faits</strong>, l'<strong>exploitation de propos sans notification régulière</strong> et la continuité de la mesure malgré le changement de service enquêteur.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2024 de la fiche ?</summary><div class="flash-answer">Elles portent sur l'<strong>information du procureur</strong>, le <strong>droit du témoin</strong> et la poursuite possible d'une confrontation après le départ volontaire de l'avocat.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2025 dans la fiche ?</summary><div class="flash-answer">Elle rappelle l'importance d'informer immédiatement le procureur quand une GAV est <strong>étendue à de nouveaux faits</strong>.</div></details>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="fiche">
+    <h3>Fiche #4 — Action publique</h3>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 1 — Notions et mécanismes</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Que signifie l'opportunité des poursuites ?</summary><div class="flash-answer">Le procureur n'est pas tenu de poursuivre automatiquement : il peut <strong>poursuivre</strong>, <strong>classer</strong> ou choisir une <strong>alternative</strong>.</div></details>
+          <details class="flashcard"><summary>Quels sont les grands choix du procureur face à une infraction ?</summary><div class="flash-answer"><strong>Classement sans suite</strong>, <strong>alternative aux poursuites</strong>, ou <strong>mise en mouvement de l'action publique</strong>.</div></details>
+          <details class="flashcard"><summary>Quels modes de poursuite faut-il savoir distinguer dans la fiche ?</summary><div class="flash-answer">Notamment la <strong>convocation</strong>, la <strong>comparution immédiate</strong> et la <strong>CRPC</strong>.</div></details>
+          <details class="flashcard"><summary>Que faut-il retenir de la comparution immédiate ?</summary><div class="flash-answer">C'est une voie <strong>rapide</strong> pour certains délits suffisamment graves, avec peu de temps laissé à la défense avant l'audience.</div></details>
+          <details class="flashcard"><summary>Comment raisonner simplement sur la prescription ?</summary><div class="flash-answer">Elle empêche de poursuivre après un certain délai, parce qu'avec le temps les <strong>preuves s'affaiblissent</strong> et l'intérêt à punir diminue.</div></details>
+          <details class="flashcard"><summary>Quel est en principe le point de départ de la prescription ?</summary><div class="flash-answer">Le <strong>lendemain de la commission</strong> de l'infraction, sauf règles spéciales comme les infractions occultes ou dissimulées.</div></details>
+          <details class="flashcard"><summary>Que faut-il retenir des infractions occultes ou dissimulées ?</summary><div class="flash-answer">Le délai peut commencer au moment où les faits pouvaient être <strong>découverts</strong>, mais ce report reste enfermé dans un <strong>délai butoir</strong>.</div></details>
+          <details class="flashcard"><summary>Quelle protection spéciale existe pour certaines infractions sexuelles commises sur mineur ?</summary><div class="flash-answer">Le délai ne court souvent qu'à partir de la <strong>majorité de la victime</strong>, ce qui retarde fortement l'extinction de l'action publique.</div></details>
+          <details class="flashcard"><summary>Quelle différence faut-il absolument connaître entre interruption et suspension ?</summary><div class="flash-answer">L'<strong>interruption</strong> fait repartir un nouveau délai à zéro ; la <strong>suspension</strong> fige temporairement le délai puis il reprend là où il s'était arrêté.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce qui interrompt classiquement la prescription ?</summary><div class="flash-answer">Un <strong>acte d'enquête</strong>, d'<strong>instruction</strong> ou de <strong>poursuite</strong> manifestant une vraie volonté de rechercher ou poursuivre l'infraction.</div></details>
+          <details class="flashcard"><summary>Quand peut-on parler de suspension de la prescription ?</summary><div class="flash-answer">Seulement en présence d'un <strong>obstacle insurmontable</strong> de droit ou de fait, réellement empêchant d'agir.</div></details>
+          <details class="flashcard"><summary>Comment s'organisent les alternatives aux poursuites ?</summary><div class="flash-answer">Elles forment une <strong>gradation</strong>, des mesures les plus souples jusqu'aux mécanismes plus lourds comme la composition pénale ou la CRPC.</div></details>
+          <details class="flashcard"><summary>Que faut-il retenir des mesures de l'article 41-1 ?</summary><div class="flash-answer">Ce sont des mesures <strong>souples et unilatérales</strong>, qui n'éteignent pas forcément l'action publique si elles échouent.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce qui distingue la composition pénale ?</summary><div class="flash-answer">La personne doit <strong>reconnaître les faits</strong>, un juge valide, et l'exécution de la mesure <strong>éteint</strong> l'action publique.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce qui distingue la CRPC ?</summary><div class="flash-answer">C'est l'alternative la plus proche d'un jugement négocié : reconnaissance des faits, <strong>peine proposée</strong>, puis <strong>homologation</strong> par un juge.</div></details>
+          <details class="flashcard"><summary>Pourquoi la CJIP est-elle spécifique ?</summary><div class="flash-answer">Parce qu'elle vise surtout les <strong>personnes morales</strong>, sans exiger d'aveu de culpabilité, dans une logique de conformité et de gestion du risque pénal.</div></details>
+        </div>
+      </div>
+    </details>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 2 — Articles et jurisprudences</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Art. 40-1 CPP ?</summary><div class="flash-answer"><strong>Triple choix du procureur</strong> : poursuivre, alternative, classement.</div></details>
+          <details class="flashcard"><summary>Art. 394, 395, 397-1 et 803-3 CPP ?</summary><div class="flash-answer"><strong>Modes de comparution</strong>, comparution immédiate, renvoi et retenue avant présentation.</div></details>
+          <details class="flashcard"><summary>Art. 7, 8 et 9 CPP ?</summary><div class="flash-answer"><strong>Délais de prescription</strong> des crimes, délits et contraventions.</div></details>
+          <details class="flashcard"><summary>Art. 9-1 CPP ?</summary><div class="flash-answer"><strong>Report du point de départ</strong> pour les infractions occultes ou dissimulées.</div></details>
+          <details class="flashcard"><summary>Art. 9-2 et 9-3 CPP ?</summary><div class="flash-answer"><strong>Interruption</strong> et <strong>suspension</strong> de la prescription.</div></details>
+          <details class="flashcard"><summary>Art. 41-1, 41-2 et 495-7 CPP ?</summary><div class="flash-answer"><strong>Mesures alternatives</strong>, composition pénale et CRPC.</div></details>
+          <details class="flashcard"><summary>Art. 41-1-2 et 41-1-3 CPP ?</summary><div class="flash-answer"><strong>CJIP</strong> de droit commun et environnementale.</div></details>
+          <details class="flashcard"><summary>Art. 1, 31 et 40 CPP ?</summary><div class="flash-answer"><strong>Action publique</strong>, rôle du ministère public et réception des plaintes.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2002 sur la prescription ?</summary><div class="flash-answer">Un acte du procureur peut déjà <strong>interrompre la prescription</strong> s'il manifeste une vraie démarche d'investigation.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2011 et 2012 sur les mesures alternatives ?</summary><div class="flash-answer">Le <strong>rappel à la loi</strong> ou les mesures alternatives n'éteignent pas l'action publique et n'empêchent pas forcément de poursuivre ensuite.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2017 sur la suspension ?</summary><div class="flash-answer">La simple <strong>dissimulation du corps</strong> ne suffit pas à suspendre la prescription.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2018 sur l'amnésie traumatique ?</summary><div class="flash-answer">Elle ne constitue pas, à elle seule, un <strong>obstacle insurmontable</strong> suspendant la prescription.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2021 de la fiche ?</summary><div class="flash-answer">Elles concernent notamment le <strong>droit de se taire devant le JLD</strong> et la <strong>comparution immédiate</strong>.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2023 et 2024 de la fiche ?</summary><div class="flash-answer">Elles précisent la notion d'<strong>obstacle insurmontable</strong>, l'<strong>interruption</strong> par des actes du parquet, la limitation des faits jugés et l'exclusion de certaines infractions de la CRPC.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2025 et 2026 de la fiche ?</summary><div class="flash-answer">Elles portent sur la <strong>composition pénale</strong>, la <strong>saisine du juge d'instruction</strong> et la suspension très stricte de la prescription.</div></details>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="fiche">
+    <h3>Fiche #5 — Action civile</h3>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 1 — Notions et mécanismes</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>À quoi sert l'action civile en procédure pénale ?</summary><div class="flash-answer">À permettre à la victime d'obtenir <strong>réparation de son dommage</strong> à l'occasion du procès pénal ou, selon les cas, devant le juge civil.</div></details>
+          <details class="flashcard"><summary>Quelles sont les trois conditions classiques du préjudice réparable au pénal ?</summary><div class="flash-answer">Le préjudice doit être <strong>personnel</strong>, <strong>direct</strong> et <strong>certain</strong>.</div></details>
+          <details class="flashcard"><summary>Que signifie l'exigence d'un préjudice direct ?</summary><div class="flash-answer">Le dommage doit découler <strong>immédiatement de l'infraction</strong>, et non d'une conséquence trop éloignée ou seulement économique.</div></details>
+          <details class="flashcard"><summary>Quelles sont les deux grandes voies offertes à la victime ?</summary><div class="flash-answer">Se constituer <strong>partie civile au pénal</strong> ou agir <strong>au civil</strong> pour demander réparation.</div></details>
+          <details class="flashcard"><summary>Que faut-il retenir du principe electa una via ?</summary><div class="flash-answer">On ne peut pas librement mener de front les deux voies : le <strong>choix initial</strong> de la voie civile ou pénale produit des effets sur la voie restante.</div></details>
+          <details class="flashcard"><summary>Pourquoi une relaxe pénale n'empêche-t-elle pas toujours l'indemnisation civile ?</summary><div class="flash-answer">Parce qu'une <strong>faute civile</strong> peut exister même si la faute pénale n'est pas retenue.</div></details>
+          <details class="flashcard"><summary>Quand la victime peut-elle déclencher l'instruction par plainte avec constitution de partie civile ?</summary><div class="flash-answer">En principe après une <strong>plainte préalable</strong>, si le procureur ne poursuit pas ou garde le silence pendant le délai prévu.</div></details>
+          <details class="flashcard"><summary>Comment une association peut-elle agir au pénal ?</summary><div class="flash-answer">Soit parce qu'elle subit un <strong>préjudice propre</strong>, soit parce que la loi l'autorise à défendre un <strong>intérêt collectif déterminé</strong>.</div></details>
+          <details class="flashcard"><summary>Quelles conditions générales faut-il retenir pour l'action des associations ?</summary><div class="flash-answer">Souvent une <strong>ancienneté minimale</strong>, un lien avec l'objet social, et parfois l'<strong>accord de la victime</strong>.</div></details>
+          <details class="flashcard"><summary>Quelle logique vaut pour les syndicats ?</summary><div class="flash-answer">Ils peuvent agir si l'infraction porte atteinte à l'<strong>intérêt collectif de la profession</strong> qu'ils représentent, avec un lien suffisamment direct.</div></details>
+          <details class="flashcard"><summary>Quelle limite importante ressort pour l'État ou les personnes publiques ?</summary><div class="flash-answer">Ils doivent prouver un <strong>préjudice propre, direct et chiffrable</strong> ; un simple préjudice moral institutionnel ne suffit pas.</div></details>
+        </div>
+      </div>
+    </details>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 2 — Articles et jurisprudences</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Art. 2 et 3 CPP ?</summary><div class="flash-answer"><strong>Fondement de l'action civile</strong> et réparation des dommages causés par l'infraction.</div></details>
+          <details class="flashcard"><summary>Art. 4 et 5 CPP ?</summary><div class="flash-answer"><strong>Rapports entre action civile et action pénale</strong>, et principe <em>electa una via</em>.</div></details>
+          <details class="flashcard"><summary>Art. 4-1 CPP ?</summary><div class="flash-answer">Possibilité d'indemniser sur le terrain de la <strong>faute civile</strong> malgré l'absence de condamnation pénale non intentionnelle.</div></details>
+          <details class="flashcard"><summary>Art. 85 CPP ?</summary><div class="flash-answer"><strong>Plainte avec constitution de partie civile</strong> devant le juge d'instruction.</div></details>
+          <details class="flashcard"><summary>Art. 2-1 à 2-25 CPP ?</summary><div class="flash-answer"><strong>Habilitations légales</strong> de certaines associations à agir en justice pénale.</div></details>
+          <details class="flashcard"><summary>Art. L142-2 Code de l'environnement ?</summary><div class="flash-answer"><strong>Action des associations environnementales agréées</strong>.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2014 dans la fiche ?</summary><div class="flash-answer">Même en cas de <strong>relaxe pénale</strong>, une condamnation civile reste possible si les faits révèlent une faute civile.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2023 sur les tiers ?</summary><div class="flash-answer">Elles encadrent l'action de l'<strong>État</strong> : réparation possible du surcoût d'enquête si prouvé, mais pas d'indemnisation pour un simple préjudice moral institutionnel.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2024 et 2025 sur les victimes directes ?</summary><div class="flash-answer">Elles rappellent l'exigence d'un <strong>préjudice directement causé</strong> par l'infraction et la limite tenant à la propriété du bien au moment des faits.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2026 sur la fiche ?</summary><div class="flash-answer">Elles concernent la <strong>procédure abusive</strong> en diffamation et l'action des <strong>fédérations syndicales</strong> selon que l'intérêt collectif est ou non suffisamment caractérisé.</div></details>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="fiche">
+    <h3>Fiche #6 — Instruction</h3>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 1 — Notions et mécanismes</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Quand l'instruction est-elle obligatoire et quand est-elle seulement facultative ?</summary><div class="flash-answer">Elle est <strong>obligatoire en matière criminelle</strong> et <strong>facultative en matière délictuelle</strong>, surtout pour les affaires graves ou complexes.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce qu'une saisine in rem du juge d'instruction ?</summary><div class="flash-answer">Le juge est saisi des <strong>faits</strong>, pas des personnes. Il peut ensuite identifier les personnes impliquées dans ce cadre factuel.</div></details>
+          <details class="flashcard"><summary>Comment le juge d'instruction est-il saisi ?</summary><div class="flash-answer">Par <strong>réquisitoire introductif</strong> du procureur ou par <strong>plainte avec constitution de partie civile</strong>.</div></details>
+          <details class="flashcard"><summary>Que faut-il faire si de nouveaux faits apparaissent pendant l'instruction ?</summary><div class="flash-answer">Le juge doit prévenir le procureur pour obtenir, si besoin, un <strong>réquisitoire supplétif</strong>, après d'éventuelles vérifications sommaires.</div></details>
+          <details class="flashcard"><summary>Pourquoi l'instruction est-elle qualifiée d'enquête juridictionnelle ?</summary><div class="flash-answer">Parce qu'elle vise la recherche des preuves mais sous la conduite d'un <strong>magistrat du siège</strong>, avec un caractère <strong>contradictoire</strong> et des garanties juridictionnelles.</div></details>
+          <details class="flashcard"><summary>Quelle mission fondamentale pèse sur le juge d'instruction ?</summary><div class="flash-answer">Instruire <strong>à charge et à décharge</strong>.</div></details>
+          <details class="flashcard"><summary>Comment distinguer mis en examen et témoin assisté ?</summary><div class="flash-answer">Le mis en examen repose sur des <strong>indices plus forts</strong> et devient pleinement partie ; le témoin assisté est un <strong>statut intermédiaire</strong>, protecteur mais moins lourd.</div></details>
+          <details class="flashcard"><summary>Quels sont les principaux acteurs privés de l'instruction ?</summary><div class="flash-answer">Le <strong>mis en examen</strong>, le <strong>témoin assisté</strong> et la <strong>partie civile</strong>, chacun avec des droits spécifiques.</div></details>
+          <details class="flashcard"><summary>Que peut faire le juge d'instruction sur le plan des actes ?</summary><div class="flash-answer">Presque tous les <strong>actes utiles</strong> à la vérité : perquisitions, interceptions, expertises, géolocalisation, enquêtes de personnalité, etc.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce qu'une commission rogatoire et quelle est sa grande limite ?</summary><div class="flash-answer">C'est une <strong>délégation</strong> du juge à un OPJ, limitée aux <strong>faits dont le juge est saisi</strong>. Elle ne peut pas ouvrir librement sur n'importe quelle infraction nouvelle.</div></details>
+          <details class="flashcard"><summary>Pourquoi les interrogatoires du mis en examen occupent-ils une place particulière ?</summary><div class="flash-answer">Parce qu'ils sont <strong>réservés au juge d'instruction</strong> et ne peuvent pas être délégués comme de simples auditions.</div></details>
+          <details class="flashcard"><summary>À quelles conditions générales la détention provisoire peut-elle être ordonnée ?</summary><div class="flash-answer">Elle doit être <strong>indispensable</strong>, subsidiaire par rapport aux mesures moins strictes, et répondre à un des objectifs légaux comme éviter les pressions, la fuite ou la réitération.</div></details>
+          <details class="flashcard"><summary>Quelle est la particularité majeure des nullités en instruction ?</summary><div class="flash-answer">On peut les soulever <strong>avant le procès</strong>, devant la chambre de l'instruction, ce qui permet de nettoyer le dossier en cours de construction.</div></details>
+          <details class="flashcard"><summary>Pourquoi parle-t-on de forclusion et de purge ?</summary><div class="flash-answer">Parce qu'il faut soulever les nullités <strong>dans les délais</strong>, sinon elles sont perdues, et certaines décisions purgent les nullités non invoquées à temps.</div></details>
+          <details class="flashcard"><summary>En quoi consiste la clôture contradictoire de l'instruction ?</summary><div class="flash-answer">Avant l'ordonnance finale, le juge envoie un <strong>avis de fin d'information</strong> et laisse au parquet et aux parties un dernier temps d'échange écrit.</div></details>
+          <details class="flashcard"><summary>Quelles sont les grandes issues de l'instruction ?</summary><div class="flash-answer"><strong>Non-lieu</strong>, <strong>renvoi</strong> devant une juridiction de jugement, <strong>mise en accusation</strong>, <strong>renvoi aux fins de CRPC</strong> et <strong>irresponsabilité pénale</strong>.</div></details>
+        </div>
+      </div>
+    </details>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 2 — Articles et jurisprudences</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Art. 79, 80, 80-1 et 80-2 CPP ?</summary><div class="flash-answer"><strong>Ouverture de l'instruction</strong>, saisine du juge, mise en examen et première comparution.</div></details>
+          <details class="flashcard"><summary>Art. 81 CPP ?</summary><div class="flash-answer"><strong>Pouvoir général du juge d'instruction</strong> d'accomplir tous les actes utiles à la manifestation de la vérité, à charge et à décharge.</div></details>
+          <details class="flashcard"><summary>Art. 82 CPP ?</summary><div class="flash-answer">Possibilité pour le procureur de <strong>requérir la détention provisoire</strong>.</div></details>
+          <details class="flashcard"><summary>Art. 105 et 113-6 CPP ?</summary><div class="flash-answer"><strong>Protection du suspect</strong> qui ne peut être simple témoin, et droit du témoin assisté de demander sa mise en examen.</div></details>
+          <details class="flashcard"><summary>Art. 92, 96, 116-1 et 151 CPP ?</summary><div class="flash-answer"><strong>Déplacement / perquisition du juge</strong>, présence lors des perquisitions, enregistrement des interrogatoires criminels et <strong>commission rogatoire</strong>.</div></details>
+          <details class="flashcard"><summary>Art. 143-1, 144 et 186 CPP ?</summary><div class="flash-answer"><strong>Détention provisoire</strong>, ses objectifs et l'<strong>appel</strong> de certaines décisions du juge d'instruction.</div></details>
+          <details class="flashcard"><summary>Art. 177 et 180-1 CPP ?</summary><div class="flash-answer"><strong>Non-lieu</strong> et renvoi aux fins de <strong>CRPC</strong> à l'issue de l'instruction.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2017 sur la commission rogatoire ?</summary><div class="flash-answer">Le juge doit veiller à ce que l'instruction reste menée <strong>à charge et à décharge</strong>.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2023 de la fiche ?</summary><div class="flash-answer">Une personne ne peut pas être privée du droit d'invoquer une nullité si elle n'a pu la découvrir <strong>qu'après la fin de l'instruction</strong>.</div></details>
+          <details class="flashcard"><summary>Jurisprudences 2024 de la fiche ?</summary><div class="flash-answer">Elles rappellent notamment que le prévenu ne peut être jugé que dans le <strong>cadre exact des faits saisis</strong> par la procédure.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2025 de la fiche ?</summary><div class="flash-answer">La contestation des <strong>indices graves ou concordants</strong> ne passe plus par la nullité de la mise en examen de la même manière qu'avant.</div></details>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="fiche">
+    <h3>Fiche #7 — Nullités</h3>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 1 — Notions et mécanismes</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>À quoi sert une nullité en procédure pénale ?</summary><div class="flash-answer">À <strong>écarter du dossier</strong> un acte irrégulier lorsqu'une règle de procédure suffisamment importante a été méconnue.</div></details>
+          <details class="flashcard"><summary>Quelle distinction de base faut-il maîtriser ?</summary><div class="flash-answer">La distinction entre <strong>nullités d'intérêt privé</strong> et <strong>nullités d'ordre public</strong>.</div></details>
+          <details class="flashcard"><summary>Quelles sont les trois conditions classiques d'une nullité d'intérêt privé ?</summary><div class="flash-answer"><strong>Qualité</strong>, <strong>intérêt</strong> et <strong>grief</strong>.</div></details>
+          <details class="flashcard"><summary>Pourquoi le grief est-il si important ?</summary><div class="flash-answer">Parce qu'il faut montrer une <strong>atteinte concrète à un droit</strong>, pas seulement le fait que l'acte a produit une preuve à charge.</div></details>
+          <details class="flashcard"><summary>Dans quels cas pense-t-on d'abord à une nullité d'ordre public ?</summary><div class="flash-answer">Notamment lorsqu'est en cause la <strong>compétence</strong>, la <strong>composition d'une juridiction</strong> ou certaines atteintes graves aux <strong>droits de la défense</strong>.</div></details>
+          <details class="flashcard"><summary>Quel est le bon ordre de raisonnement en cas pratique hors nullité d'ordre public ?</summary><div class="flash-answer"><strong>Intérêt</strong>, puis <strong>qualité</strong>, puis <strong>grief</strong>.</div></details>
+          <details class="flashcard"><summary>Qui peut invoquer une nullité ?</summary><div class="flash-answer">La personne <strong>protégée par la règle violée</strong> et réellement concernée par l'acte ; on ne plaide pas la nullité au nom d'un tiers.</div></details>
+          <details class="flashcard"><summary>Que devient l'acte annulé ?</summary><div class="flash-answer">Il est <strong>retiré du dossier</strong> ou neutralisé.</div></details>
+          <details class="flashcard"><summary>Qu'est-ce que la nullité en cascade ?</summary><div class="flash-answer">Les actes postérieurs tombent aussi s'ils reposent <strong>nécessairement et uniquement</strong> sur l'acte nul.</div></details>
+          <details class="flashcard"><summary>Que signifie l'idée d'« autre support » ?</summary><div class="flash-answer">Qu'un acte postérieur peut être <strong>sauvé</strong> s'il repose aussi sur un élément régulier indépendant.</div></details>
+        </div>
+      </div>
+    </details>
+
+    <details class="flash-pack" open>
+      <summary>Niveau 2 — Articles et jurisprudences</summary>
+      <div class="flash-pack-body">
+        <div class="flash-grid">
+          <details class="flashcard"><summary>Art. 171 CPP ?</summary><div class="flash-answer"><strong>Formalité substantielle</strong> ou règle d'ordre public pouvant conduire à la nullité.</div></details>
+          <details class="flashcard"><summary>Art. 172 CPP ?</summary><div class="flash-answer"><strong>Renonciation expresse</strong> à se prévaloir d'une nullité, sous garanties.</div></details>
+          <details class="flashcard"><summary>Art. 173 et suivants CPP ?</summary><div class="flash-answer"><strong>Requête en nullité</strong> et compétence de la chambre de l'instruction.</div></details>
+          <details class="flashcard"><summary>Art. 174 CPP ?</summary><div class="flash-answer"><strong>Purge des nullités</strong> devant la chambre de l'instruction.</div></details>
+          <details class="flashcard"><summary>Art. 802 CPP ?</summary><div class="flash-answer">Principe selon lequel il n'y a pas de nullité sans <strong>atteinte aux intérêts</strong> de la personne concernée, hors hypothèses d'ordre public.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2021 sur la méthode des nullités ?</summary><div class="flash-answer">Le juge doit raisonner successivement sur <strong>l'intérêt</strong>, la <strong>qualité</strong> puis le <strong>grief</strong> du requérant.</div></details>
+          <details class="flashcard"><summary>Jurisprudence 2024 sur le grief ?</summary><div class="flash-answer">Le grief ne se confond pas avec le simple fait que l'acte irrégulier a permis de <strong>trouver une preuve à charge</strong>.</div></details>
+        </div>
+      </div>
+    </details>
+  </div>
+    </div>
   </div>
 </div>
 
@@ -1272,5 +1893,236 @@ footer span{color:var(--rv)}
 
 </div><!-- /.wrap -->
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const page = document.getElementById('page-fc');
+  if (!page) return;
+
+  const ficheSelect = document.getElementById('flash-fiche');
+  const levelSelect = document.getElementById('flash-level');
+  const startBoxEl = document.getElementById('flash-start');
+  const startBtn = document.getElementById('flash-start-btn');
+  const countEl = document.getElementById('flash-count');
+  const progressTextEl = document.getElementById('flash-progress-text');
+  const stageEl = document.getElementById('flash-stage');
+  const emptyEl = document.getElementById('flash-empty');
+  const eyebrowEl = document.getElementById('flash-eyebrow');
+  const seenEl = document.getElementById('flash-seen');
+  const badEl = document.getElementById('flash-bad');
+  const goodEl = document.getElementById('flash-good');
+  const cardBtn = document.getElementById('flash-card');
+  const faceLabelEl = document.getElementById('flash-face-label');
+  const cardTextEl = document.getElementById('flash-card-text');
+  const feedbackEl = document.getElementById('flash-feedback');
+  const markBadBtn = document.getElementById('flash-mark-bad');
+  const markGoodBtn = document.getElementById('flash-mark-good');
+  const libraryTableEl = document.getElementById('flash-library-table');
+  const prevBtn = document.getElementById('flash-prev');
+  const nextBtn = document.getElementById('flash-next');
+  const reviewOnlyBtn = document.getElementById('flash-review-only');
+  const shuffleBtn = document.getElementById('flash-shuffle');
+
+  const packs = Array.from(page.querySelectorAll('.flash-source .fiche'));
+  const cards = [];
+
+  packs.forEach(function (ficheBlock) {
+    const ficheTitle = ficheBlock.querySelector('h3');
+    if (!ficheTitle) return;
+    const fiche = ficheTitle.textContent.trim();
+
+    ficheBlock.querySelectorAll('.flash-pack').forEach(function (pack) {
+      const summary = pack.querySelector('summary');
+      if (!summary) return;
+      const level = summary.textContent.includes('Niveau 2') ? 'Niveau 2' : 'Niveau 1';
+
+      pack.querySelectorAll('.flashcard').forEach(function (card) {
+        const q = card.querySelector('summary');
+        const a = card.querySelector('.flash-answer');
+        if (!q || !a) return;
+        cards.push({
+          fiche: fiche,
+          level: level,
+          question: q.textContent.trim(),
+          answer: a.innerHTML.trim(),
+          answerText: a.textContent.trim()
+        });
+      });
+    });
+  });
+
+  const uniqueFiches = Array.from(new Set(cards.map(function (card) { return card.fiche; })));
+  uniqueFiches.forEach(function (fiche) {
+    const option = document.createElement('option');
+    option.value = fiche;
+    option.textContent = fiche;
+    ficheSelect.appendChild(option);
+  });
+
+  let filtered = cards.slice();
+  let index = 0;
+  let answerVisible = false;
+  let started = false;
+  let reviewOnly = false;
+  const progress = new Map();
+
+  cards.forEach(function (card, i) {
+    card.id = 'card-' + i;
+  });
+
+  function fillLibraryTable() {
+    libraryTableEl.innerHTML = cards.map(function (card) {
+      return '<tr><td>' + card.fiche + '</td><td>' + card.level + '</td><td>' + card.question + '</td><td>' + card.answer + '</td></tr>';
+    }).join('');
+  }
+
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = tmp;
+    }
+  }
+
+  function stats() {
+    let seen = 0;
+    let bad = 0;
+    let good = 0;
+    progress.forEach(function (value) {
+      if (!value) return;
+      seen += 1;
+      if (value === 'bad') bad += 1;
+      if (value === 'good') good += 1;
+    });
+    return { seen: seen, bad: bad, good: good };
+  }
+
+  function updateStats() {
+    const s = stats();
+    seenEl.textContent = String(s.seen);
+    badEl.textContent = String(s.bad);
+    goodEl.textContent = String(s.good);
+    reviewOnlyBtn.classList.toggle('active', reviewOnly);
+  }
+
+  function applyFilters() {
+    filtered = cards.filter(function (card) {
+      const ficheOk = ficheSelect.value === 'all' || card.fiche === ficheSelect.value;
+      const levelOk = levelSelect.value === 'all' || card.level === levelSelect.value;
+      const reviewOk = !reviewOnly || progress.get(card.id) === 'bad';
+      return ficheOk && levelOk && reviewOk;
+    });
+    index = 0;
+    answerVisible = false;
+    updateStats();
+    if (started) render();
+  }
+
+  function render() {
+    if (!filtered.length) {
+      stageEl.hidden = true;
+      emptyEl.hidden = false;
+      countEl.textContent = '0 carte';
+      progressTextEl.textContent = '';
+      feedbackEl.hidden = true;
+      return;
+    }
+
+    const card = filtered[index];
+    emptyEl.hidden = true;
+    stageEl.hidden = false;
+    eyebrowEl.textContent = card.fiche + ' · ' + card.level + ' · Carte ' + (index + 1) + ' / ' + filtered.length;
+    faceLabelEl.textContent = answerVisible ? 'Reponse' : 'Question';
+    if (answerVisible) {
+      cardTextEl.innerHTML = card.answer;
+    } else {
+      cardTextEl.textContent = card.question;
+    }
+    feedbackEl.hidden = !answerVisible;
+    countEl.textContent = filtered.length + (filtered.length > 1 ? ' cartes disponibles' : ' carte disponible');
+    progressTextEl.textContent = 'Carte ' + (index + 1) + ' sur ' + filtered.length;
+  }
+
+  prevBtn.addEventListener('click', function () {
+    if (!filtered.length) return;
+    index = (index - 1 + filtered.length) % filtered.length;
+    answerVisible = false;
+    render();
+  });
+
+  nextBtn.addEventListener('click', function () {
+    if (!filtered.length) return;
+    index = (index + 1) % filtered.length;
+    answerVisible = false;
+    render();
+  });
+
+  cardBtn.addEventListener('click', function () {
+    if (!filtered.length) return;
+    answerVisible = !answerVisible;
+    render();
+  });
+
+  function markCard(status) {
+    if (!filtered.length) return;
+    const card = filtered[index];
+    progress.set(card.id, status);
+    updateStats();
+    if (reviewOnly && status === 'good') {
+      filtered.splice(index, 1);
+      if (index >= filtered.length) index = 0;
+      answerVisible = false;
+      render();
+      return;
+    }
+    index = (index + 1) % filtered.length;
+    answerVisible = false;
+    render();
+  }
+
+  markBadBtn.addEventListener('click', function () {
+    markCard('bad');
+  });
+
+  markGoodBtn.addEventListener('click', function () {
+    markCard('good');
+  });
+
+  shuffleBtn.addEventListener('click', function () {
+    if (!filtered.length) return;
+    shuffleArray(filtered);
+    index = 0;
+    answerVisible = false;
+    render();
+  });
+
+  reviewOnlyBtn.addEventListener('click', function () {
+    reviewOnly = !reviewOnly;
+    applyFilters();
+  });
+
+  startBtn.addEventListener('click', function () {
+    started = true;
+    applyFilters();
+    emptyEl.hidden = !!filtered.length;
+    if (filtered.length) {
+      stageEl.hidden = false;
+    }
+    startBoxEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  ficheSelect.addEventListener('change', function () {
+    applyFilters();
+  });
+  levelSelect.addEventListener('change', function () {
+    applyFilters();
+  });
+
+  fillLibraryTable();
+  updateStats();
+  stageEl.hidden = true;
+  emptyEl.hidden = true;
+});
+</script>
 </body>
 </html>
